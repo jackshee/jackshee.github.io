@@ -1,9 +1,18 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3"
+# For GitHub Pages compatibility, use github-pages gem
+# Uncomment the line below and comment out individual gems for GitHub Pages
+# gem "github-pages", group: :jekyll_plugins
+
+# For local development with Ruby 2.6
+gem "jekyll", "~> 3.9"
 gem "jekyll-feed", "~> 0.15"
 gem "jekyll-sitemap", "~> 1.4"
 gem "jekyll-paginate", "~> 1.1"
+gem "kramdown-parser-gfm"
+
+# Lock ffi for Ruby 2.6 compatibility
+gem "ffi", "~> 1.13.0"
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
