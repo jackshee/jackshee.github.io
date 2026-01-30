@@ -1,0 +1,19 @@
+{% if include.title or include.subtitle or include.image %}
+<section class="hero-section" style="{% if include.image %}background-image: url('{{ include.image }}');{% endif %}">
+    <div class="hero-overlay" style="background-color: {{ include.overlay_color | default: 'rgba(0,0,0,0.5)' }};"></div>
+    <div class="container">
+        <div class="hero-content" style="text-align: {{ include.alignment | default: 'center' }};">
+            {% if include.title %}
+            <h1 class="hero-title">{{ include.title }}</h1>
+            {% endif %}
+            {% if include.subtitle %}
+            <p class="hero-subtitle">{{ include.subtitle }}</p>
+            {% endif %}
+            {% if include.button_text and include.button_url %}
+            <a href="{{ include.button_url }}" class="btn btn-primary btn-hero">{{ include.button_text }}</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+

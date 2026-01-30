@@ -1,0 +1,113 @@
+---
+layout: home
+---
+
+{% include hero.html 
+    title="John Doe"
+    subtitle="Full-Stack Developer & Creative Problem Solver"
+    button_text="View My Work"
+    button_url="#projects"
+    image="/assets/images/hero-bg.jpg"
+    alignment="center"
+%}
+
+<!-- About Section -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>Passionate developer with a love for creating beautiful and functional digital experiences</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="card-title">Clean Code</h3>
+                    <p class="card-description">Writing maintainable, scalable, and efficient code that stands the test of time.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="card-title">Beautiful Design</h3>
+                    <p class="card-description">Creating visually stunning interfaces that provide exceptional user experiences.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Fast Performance</h3>
+                    <p class="card-description">Optimizing applications for speed and performance to deliver lightning-fast experiences.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="section" id="services" style="background-color: #f9fafb;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Services</h2>
+            <p>What I can help you with</p>
+        </div>
+        <div class="card-grid">
+            {% for service in site.data.services %}
+            <div class="card">
+                <div class="card-icon">
+                    <i class="{{ service.icon }}"></i>
+                </div>
+                <h3 class="card-title">{{ service.title }}</h3>
+                <p class="card-description">{{ service.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-title">
+            <h2>Featured Projects</h2>
+            <p>Some of my recent work and side projects</p>
+        </div>
+        <div class="card-grid">
+            {% for project in site.data.projects limit: 6 %}
+            <div class="card">
+                {% if project.image %}
+                <img src="{{ project.image }}" alt="{{ project.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1rem;">
+                {% endif %}
+                <h3 class="card-title">{{ project.title }}</h3>
+                <p class="card-description">{{ project.description }}</p>
+                {% if project.technologies %}
+                <div style="margin-top: 1rem;">
+                    {% for tech in project.technologies %}
+                    <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; border-radius: 0.25rem; font-size: 0.875rem; margin-right: 0.5rem; margin-bottom: 0.5rem;">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if project.url %}
+                <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 1rem;">View Project</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: white; text-align: center;">
+    <div class="container">
+        <h2 style="color: white; margin-bottom: 1rem;">Let's Work Together</h2>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">Have a project in mind? I'd love to hear about it.</p>
+        <a href="{{ '/contact' | relative_url }}" class="btn btn-primary btn-hero" style="background-color: white; color: #3b82f6;">Get In Touch</a>
+    </div>
+</section>
+

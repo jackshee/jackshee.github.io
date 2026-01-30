@@ -1,0 +1,118 @@
+# Site Settings
+title: "John Doe - Portfolio"
+description: "A minimal resume and portfolio website showcasing my work and experience"
+url: "https://jackshee.github.io"
+baseurl: ""
+
+# Author
+author:
+  name: "John Doe"
+  email: "john.doe@example.com"
+  bio: "Full-stack developer passionate about creating beautiful and functional web experiences"
+  avatar: "/assets/images/avatar.jpg"
+
+# Logo
+logo: "/assets/images/logo.svg"
+logo_text: "John Doe"
+
+# Colors
+colors:
+  primary: "#3b82f6"
+  secondary: "#8b5cf6"
+  accent: "#10b981"
+  text: "#1f2937"
+  text_light: "#6b7280"
+  background: "#ffffff"
+  background_dark: "#111827"
+
+# Typography
+fonts:
+  primary: "Inter"
+  secondary: "Playfair Display"
+  google_fonts: "Inter:wght@300;400;500;600;700|Playfair+Display:wght@400;700"
+
+# Dark Mode
+dark_mode:
+  enabled: true
+  default: "auto" # auto, light, dark
+
+# Header
+header:
+  transparent: true
+  sticky: true
+  animated: true
+
+# Navigation
+navigation:
+  - name: "Home"
+    url: "/"
+  - name: "About"
+    url: "/about"
+  - name: "Projects"
+    url: "/projects"
+  - name: "Services"
+    url: "/services"
+  - name: "Blog"
+    url: "/blog"
+  - name: "Contact"
+    url: "/contact"
+
+# Social Links
+social:
+  github: "https://github.com/jackshee"
+  linkedin: "https://linkedin.com/in/johndoe"
+  twitter: "https://twitter.com/johndoe"
+  email: "mailto:john.doe@example.com"
+
+# Footer
+footer:
+  copyright: "© 2025 John Doe. All rights reserved."
+  menus:
+    - title: "Quick Links"
+      links:
+        - name: "Home"
+          url: "/"
+        - name: "About"
+          url: "/about"
+        - name: "Contact"
+          url: "/contact"
+    - title: "Resources"
+      links:
+        - name: "Blog"
+          url: "/blog"
+        - name: "Projects"
+          url: "/projects"
+        - name: "Services"
+          url: "/services"
+
+# Blog
+blog:
+  paginate: 5
+  paginate_path: "/blog/page:num/"
+
+# SEO
+seo:
+  default_image: "/assets/images/og-image.jpg"
+  twitter_handle: "@johndoe"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .gitignore
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+sass:
+  style: compressed
+

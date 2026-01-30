@@ -1,0 +1,9 @@
+- name: "John Doe"
+  role: "Full-Stack Developer"
+  bio: "Passionate about creating beautiful and functional web experiences."
+  image: "/assets/images/team-1.jpg"
+  social:
+    github: "https://github.com/jackshee"
+    linkedin: "https://linkedin.com/in/johndoe"
+    twitter: "https://twitter.com/johndoe"
+

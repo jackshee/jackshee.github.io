@@ -1,0 +1,42 @@
+<header class="site-header {% if page.hero and site.header.transparent %}transparent{% endif %} {% if site.header.sticky %}sticky{% endif %}">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                {% if site.logo %}
+                <a href="{{ '/' | relative_url }}" class="logo">
+                    <img src="{{ site.logo | relative_url }}" alt="{{ site.logo_text | default: site.title }}">
+                </a>
+                {% else %}
+                <a href="{{ '/' | relative_url }}" class="logo-text">{{ site.logo_text | default: site.title }}</a>
+                {% endif %}
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="navbar-menu">
+                <ul class="navbar-nav">
+                    {% for item in site.navigation %}
+                    <li class="nav-item">
+                        <a href="{{ item.url | relative_url }}" class="nav-link {% if page.url == item.url %}active{% endif %}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            {% if site.dark_mode.enabled %}
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            {% endif %}
+        </div>
+    </nav>
+    
+    <div class="mobile-overlay"></div>
+</header>
+

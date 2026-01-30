@@ -1,0 +1,24 @@
+- title: "Web Development"
+  description: "Building responsive, modern websites and web applications using the latest technologies and best practices."
+  icon: "fas fa-laptop-code"
+
+- title: "Frontend Development"
+  description: "Creating beautiful and interactive user interfaces with React, Vue, and modern CSS frameworks."
+  icon: "fas fa-paint-brush"
+
+- title: "Backend Development"
+  description: "Developing robust server-side applications and APIs using Node.js, Python, and cloud services."
+  icon: "fas fa-server"
+
+- title: "UI/UX Design"
+  description: "Designing intuitive user experiences and visually appealing interfaces that users love."
+  icon: "fas fa-mobile-alt"
+
+- title: "E-commerce Solutions"
+  description: "Building scalable e-commerce platforms with secure payment processing and inventory management."
+  icon: "fas fa-shopping-cart"
+
+- title: "Consulting"
+  description: "Providing technical expertise and guidance to help your business make informed technology decisions."
+  icon: "fas fa-lightbulb"
+

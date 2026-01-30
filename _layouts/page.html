@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+{% if page.hero %}
+<section class="hero-section" style="background-image: url('{{ page.hero.image | default: '/assets/images/hero-default.jpg' }}');">
+    <div class="hero-overlay" style="background-color: {{ page.hero.overlay_color | default: 'rgba(0,0,0,0.5)' }};"></div>
+    <div class="container">
+        <div class="hero-content" style="text-align: {{ page.hero.alignment | default: 'center' }};">
+            {% if page.hero.title %}
+            <h1 class="hero-title">{{ page.hero.title }}</h1>
+            {% else %}
+            <h1 class="hero-title">{{ page.title }}</h1>
+            {% endif %}
+            {% if page.hero.subtitle %}
+            <p class="hero-subtitle">{{ page.hero.subtitle }}</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<div class="page-content">
+    <div class="container">
+        {% if page.breadcrumbs != false %}
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+            </ol>
+        </nav>
+        {% endif %}
+        
+        <div class="content-wrapper">
+            {% if page.hero == null %}
+            <h1 class="page-title">{{ page.title }}</h1>
+            {% endif %}
+            
+            {{ content }}
+        </div>
+    </div>
+</div>
+
