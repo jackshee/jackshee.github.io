@@ -473,33 +473,114 @@ body.menu-open {
 
 // Theme Toggle Button
 // Button to switch between light and dark themes
+// Contains a circle element and SVG icons (sun/moon) in a flex container
+// Layout: Light mode = [circle] [sun], Dark mode = [moon] [circle]
+
+// Shared variables for toggle elements (used in both light and dark modes)
+$toggle-width: 4rem;
+$toggle-circle-size: 1.25rem;
+$toggle-icon-size: 1.25rem;
+$toggle-padding: 0.5rem;
+
 .theme-toggle {
+    
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.9);  // White icon
-    font-size: 1.25rem;                // Icon size
     cursor: pointer;
-    padding: $spacing-unit * 0.5;
     @include transition(all);
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 44px;                       // Touch-friendly size
-    height: 32px;
-    border-radius: 20px;              // Rounded button
+    justify-content: space-between;
+    width: $toggle-width;
+    height: 1.5rem;
+    padding: $toggle-padding;
+    border-radius: 0.75rem;
     position: relative;
     z-index: 1002;                     // Above other elements
     flex-shrink: 0;                    // Prevents shrinking
+    background-color: rgba(255, 255, 255, 0.1);  // Subtle background
     
     // Hover State
-    // Adds background and changes color on hover
+    // Slightly brighter background on hover
     &:hover {
-        background-color: rgba(255, 255, 255, 0.1);  // Light background
-        color: #61cf5a;                                // Green accent
+        background-color: rgba(255, 255, 255, 0.15);
     }
     
     @include media-query($breakpoint-md) {
         margin-left: $spacing-unit;
+    }
+    
+    // Theme Toggle Circle
+    // Clickable circle that slides between positions
+    .theme-toggle-circle {
+        width: $toggle-circle-size;
+        height: $toggle-circle-size;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.95);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        @include transition(all, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));
+        z-index: 2;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    // Theme Toggle Icons (Sun and Moon)
+    // SVG icons for sun and moon positioned at edges
+    .theme-toggle-icon {
+        width: $toggle-icon-size;
+        height: $toggle-icon-size;
+        color: rgba(255, 255, 255, 0.9);
+        @include transition(all, 0.3s, ease);
+        flex-shrink: 0;
+        z-index: 1;
+        position: relative;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    
+    // Sun Icon (shown in light mode, positioned on right)
+    .theme-toggle-sun {
+        order: 2;
+    }
+    
+    // Moon Icon (shown in dark mode, positioned on left)
+    .theme-toggle-moon {
+        order: 1;
+    }
+    
+    // Light Mode State: Circle on left, sun icon visible on right
+    &:not([data-theme="dark"]) {
+        .theme-toggle-circle {
+            left: $toggle-padding;
+        }
+        .theme-toggle-sun {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    // Dark Mode State: Moon icon visible on left, circle on right
+    &[data-theme="dark"] {
+        .theme-toggle-circle {
+            left: calc(#{$toggle-width} - #{$toggle-circle-size} - #{$toggle-padding});
+        }
+        .theme-toggle-moon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+// Dark Mode Theme Toggle Override
+// When html has data-theme="dark", update toggle button
+[data-theme="dark"] .theme-toggle {
+    .theme-toggle-circle {
+        left: calc(#{$toggle-width} - #{$toggle-circle-size} - #{$toggle-padding});
+    }
+    .theme-toggle-moon {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -1110,15 +1191,8 @@ body.menu-open {
     }
     
     // Theme Toggle Dark Mode
-    // Light text for visibility
-    .theme-toggle {
-        color: #e5e5e5;
-        
-        &:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-        }
-    }
+    // The toggle button styling is handled by the data-theme attribute
+    // No additional overrides needed as the toggle adapts automatically
     
     // Navigation Links Dark Mode
     // Light text for visibility

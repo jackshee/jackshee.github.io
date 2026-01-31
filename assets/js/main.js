@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme') || 'auto';
     applyTheme(savedTheme);
     
+    // Click handler - clicking anywhere on the toggle switches theme
     themeToggle.addEventListener('click', function() {
         const currentTheme = html.getAttribute('data-theme') || 'auto';
         let newTheme;
@@ -85,24 +86,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function applyTheme(theme) {
         if (theme === 'auto') {
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-            updateIcon('auto');
+            const actualTheme = prefersDark ? 'dark' : 'light';
+            html.setAttribute('data-theme', actualTheme);
+            updateToggle(actualTheme);
         } else {
             html.setAttribute('data-theme', theme);
-            updateIcon(theme);
+            updateToggle(theme);
         }
     }
     
-    function updateIcon(theme) {
-        const icon = themeToggle.querySelector('i');
-        if (icon) {
-            if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                icon.classList.remove('fa-regular', 'fa-moon');
-                icon.classList.add('fa-solid', 'fa-sun');
-            } else {
-                icon.classList.remove('fa-solid', 'fa-sun');
-                icon.classList.add('fa-regular', 'fa-moon');
-            }
+    function updateToggle(theme) {
+        // Update the toggle button's data-theme attribute for CSS styling
+        // This controls the visual state: dark = circle left + sun, light = moon + circle right
+        if (theme === 'dark') {
+            themeToggle.setAttribute('data-theme', 'dark');
+        } else {
+            themeToggle.removeAttribute('data-theme');
         }
     }
     
