@@ -1,176 +1,284 @@
-// Variables
-$primary-color: #3b82f6;
-$secondary-color: #8b5cf6;
-$accent-color: #10b981;
-$text-color: #1f2937;
-$text-light: #6b7280;
-$bg-color: #ffffff;
-$bg-dark: #111827;
-$border-color: #e5e7eb;
+// ============================================================================
+// VARIABLES
+// ============================================================================
+// Centralized color, typography, spacing, and breakpoint definitions
+// These variables are used throughout the stylesheet for consistency
+
+// Color Palette
+// Primary colors used for buttons, links, and accents
+$primary-color: #000000;        // Main brand color (black)
+$secondary-color: #666666;      // Secondary text and UI elements
+$accent-color: #000000;         // Accent color (currently same as primary)
+$text-color: #1a1a1a;          // Main body text color (dark gray)
+$text-light: #666666;           // Lighter text for descriptions/secondary content
+$bg-color: #ffffff;             // Main background color (white)
+$bg-dark: #0a0a0a;              // Dark mode background (near black)
+$bg-dark-card: #1a1a1a;         // Dark mode card background (slightly lighter)
+$border-color: #e5e7eb;         // Light border color for cards/sections
+$border-dark: rgba(255, 255, 255, 0.1);  // Dark mode border color
 
 // Typography
-$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-$font-secondary: 'Playfair Display', serif;
+// Font stack with Fira Code as primary, system fonts as fallbacks
+$font-primary: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-secondary: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-// Spacing
-$spacing-unit: 1rem;
-$container-max-width: 1200px;
+// Spacing System
+// Base spacing unit used for consistent margins and padding
+$spacing-unit: 1rem;            // Base spacing (16px default)
+$container-max-width: 1440px;   // Maximum width for content containers
 
-// Breakpoints
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
+// Responsive Breakpoints
+// Media query breakpoints for mobile-first responsive design
+$breakpoint-sm: 576px;          // Small devices (landscape phones)
+$breakpoint-md: 768px;          // Medium devices (tablets)
+$breakpoint-lg: 992px;          // Large devices (desktops)
+$breakpoint-xl: 1200px;         // Extra large devices (large desktops)
 
-// Mixins
+// ============================================================================
+// MIXINS
+// ============================================================================
+// Reusable SCSS functions for common patterns
+
+// Transition Mixin
+// Creates smooth transitions for CSS properties
+// @param $property: CSS property to animate (default: all)
+// @param $duration: Animation duration (default: 0.3s)
+// @param $easing: Timing function (default: ease)
 @mixin transition($property: all, $duration: 0.3s, $easing: ease) {
     transition: $property $duration $easing;
 }
 
+// Media Query Mixin
+// Creates responsive breakpoints with min-width
+// @param $breakpoint: Breakpoint value to use
 @mixin media-query($breakpoint) {
     @media (min-width: $breakpoint) {
         @content;
     }
 }
 
-// Reset & Base
+// ============================================================================
+// RESET & BASE STYLES
+// ============================================================================
+// Global resets and base element styling
+
+// Universal Reset
+// Removes default margins, padding, and sets box-sizing for all elements
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;  // Includes padding and border in element width
 }
 
+// HTML Element
+// Enables smooth scrolling behavior for anchor links
 html {
     scroll-behavior: smooth;
 }
 
+// Body Element
+// Sets base typography, colors, and background for the entire page
 body {
-    font-family: $font-primary;
-    font-size: 16px;
-    line-height: 1.6;
-    color: $text-color;
-    background-color: $bg-color;
-    @include transition(background-color, 0.3s);
+    font-family: $font-primary;      // Uses Fira Code font stack
+    font-size: 16px;                  // Base font size
+    line-height: 1.7;                 // Comfortable reading line height
+    color: $text-color;                // Main text color
+    background-color: $bg-color;       // White background
+    @include transition(background-color, 0.3s);  // Smooth theme transitions
+    -webkit-font-smoothing: antialiased;  // Better font rendering on macOS
+    -moz-osx-font-smoothing: grayscale;   // Better font rendering on Firefox/macOS
 }
 
-// Container
+// ============================================================================
+// LAYOUT - CONTAINER
+// ============================================================================
+// Main content container with responsive padding
+
+// Container Class
+// Centers content with max-width and responsive horizontal padding
+// Used to wrap main content sections
 .container {
-    max-width: $container-max-width;
-    margin: 0 auto;
-    padding: 0 $spacing-unit * 1.5;
+    max-width: $container-max-width;  // Limits width to 1440px
+    margin: 0 auto;                    // Centers container horizontally
+    padding: 0 $spacing-unit * 1.5;   // 1.5rem padding on mobile
     
     @include media-query($breakpoint-md) {
-        padding: 0 $spacing-unit * 2;
+        padding: 0 $spacing-unit * 2;  // 2rem padding on tablets and up
     }
 }
 
-// Typography
+// ============================================================================
+// TYPOGRAPHY
+// ============================================================================
+// Heading and text element styling
+
+// All Headings (h1-h6)
+// Unified styling for all heading levels with consistent spacing and weight
 h1, h2, h3, h4, h5, h6 {
-    font-family: $font-secondary;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: $spacing-unit;
-    color: $text-color;
+    font-family: $font-secondary;     // Uses secondary font stack
+    font-weight: 600;                 // Semi-bold weight
+    line-height: 1.3;                 // Tighter line height for headings
+    margin-bottom: $spacing-unit;     // Bottom margin
+    color: $text-color;                // Text color
+    letter-spacing: -0.02em;          // Slightly tighter letter spacing
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+// Individual Heading Sizes
+// Specific font sizes for each heading level
+h1 { font-size: 3rem; font-weight: 700; }      // Largest, boldest
+h2 { font-size: 2.25rem; font-weight: 600; }    // Section titles
+h3 { font-size: 1.75rem; font-weight: 600; }    // Subsection titles
+h4 { font-size: 1.5rem; font-weight: 600; }     // Card titles
+h5 { font-size: 1.25rem; font-weight: 600; }    // Smaller headings
+h6 { font-size: 1rem; font-weight: 600; }       // Smallest headings
 
+// Paragraphs
+// Base paragraph styling with bottom margin for spacing
 p {
     margin-bottom: $spacing-unit;
 }
 
+// Links
+// Anchor tag styling with hover effects
 a {
-    color: $primary-color;
-    text-decoration: none;
-    @include transition(color);
+    color: $primary-color;            // Black links
+    text-decoration: none;            // Removes underline
+    @include transition(color);       // Smooth color transition
     
     &:hover {
-        color: darken($primary-color, 10%);
+        color: darken($primary-color, 10%);  // Darker on hover
     }
 }
 
-// Buttons
+// ============================================================================
+// BUTTONS
+// ============================================================================
+// Button component with multiple variants
+
+// Base Button Class
+// Common button styles applied to all button variants
 .btn {
-    display: inline-block;
-    padding: $spacing-unit * 0.75 $spacing-unit * 1.5;
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-    border: none;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    @include transition(all);
+    display: inline-block;            // Allows width/height control
+    padding: $spacing-unit * 0.875 $spacing-unit * 2;  // Vertical and horizontal padding
+    font-size: 1rem;                  // Base font size
+    font-weight: 500;                  // Medium weight
+    text-align: center;                // Centers text
+    border: 1px solid $primary-color; // Black border
+    border-radius: 0.5rem;            // Rounded corners
+    cursor: pointer;                   // Pointer cursor on hover
+    @include transition(all, 0.2s, ease);  // Smooth transitions
+    text-decoration: none;             // Removes underline if used on links
     
+    // Primary Button Variant
+    // Filled button with black background and white text
     &.btn-primary {
-        background-color: $primary-color;
-        color: white;
+        background-color: $primary-color;  // Black background
+        color: white;                       // White text
+        border-color: $primary-color;      // Black border
         
         &:hover {
-            background-color: darken($primary-color, 10%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+            background-color: darken($primary-color, 5%);  // Darker on hover
+            transform: translateY(-2px);                  // Lifts button up
+            box-shadow: 0 8px 16px rgba($primary-color, 0.2);  // Adds shadow
         }
     }
     
+    // Secondary Button Variant
+    // Outlined button with transparent background
     &.btn-secondary {
-        background-color: $secondary-color;
-        color: white;
+        background-color: transparent;     // No background
+        color: $primary-color;             // Black text
+        border-color: $primary-color;      // Black border
         
         &:hover {
-            background-color: darken($secondary-color, 10%);
+            background-color: $primary-color;  // Fills with black on hover
+            color: white;                      // Text turns white
         }
     }
     
+    // Hero Button Variant
+    // Larger button for hero sections
     &.btn-hero {
-        padding: $spacing-unit * 1 $spacing-unit * 2;
-        font-size: 1.125rem;
-        margin-top: $spacing-unit * 1.5;
+        padding: $spacing-unit * 1.125 $spacing-unit * 2.5;  // Larger padding
+        font-size: 1.125rem;                 // Slightly larger text
+        margin-top: $spacing-unit * 1.5;     // Top margin
     }
 }
 
-// Header
+// ============================================================================
+// HEADER & NAVIGATION
+// ============================================================================
+// Site header with navigation menu and mobile menu support
+
+// Site Header
+// Main header container with glassmorphism effect (blurred background)
 .site-header {
-    background-color: $bg-color;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    @include transition(all);
+    background-color: rgba(17, 22, 19, 0.85);  // Semi-transparent dark green
+    backdrop-filter: blur(10px);                // Blurs content behind header
+    -webkit-backdrop-filter: blur(10px);        // Safari support
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);  // Subtle bottom border
+    @include transition(all);                    // Smooth transitions
     
+    // Transparent Header Variant
+    // Used when header should be transparent initially
     &.transparent {
-        background-color: transparent;
-        box-shadow: none;
+        background-color: rgba(17, 22, 19, 0.85);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         
+        // Scrolled State
+        // Maintains same appearance when scrolled (no change needed)
         &.scrolled {
-            background-color: $bg-color;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: rgba(17, 22, 19, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
     }
     
+    // Sticky Header
+    // Keeps header visible when scrolling
     &.sticky {
         position: sticky;
         top: 0;
-        z-index: 1000;
+        z-index: 1000;  // Above other content
     }
 }
 
+// Navbar Container
+// Flexbox container for navigation elements
 .navbar {
-    padding: $spacing-unit 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+    padding: $spacing-unit * 2.5 0;  // Vertical padding
+    display: flex;                    // Flexbox layout
+    justify-content: space-between;  // Space between brand and menu
+    align-items: center;              // Vertically centers items
+    position: relative;               // For absolute positioning of children
+    
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
 }
 
+// Navbar Right Section
+// Container for menu items and theme toggle on the right side
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-unit * 1.5;  // Space between items
+    margin-left: auto;          // Pushes to the right
+}
+
+// Navbar Brand
+// Logo and site name container
 .navbar-brand {
     .logo {
         display: block;
-        height: 40px;
+        height: 40px;  // Fixed logo height
         
         img {
-            height: 100%;
+            height: 100%;  // Maintains aspect ratio
             width: auto;
         }
     }
@@ -178,106 +286,159 @@ a {
     .logo-text {
         font-size: 1.5rem;
         font-weight: 700;
-        color: $text-color;
+        color: rgba(255, 255, 255, 0.95);  // Near-white text
     }
 }
 
+// Mobile Navigation Menu
+// Slide-out menu for mobile devices
 .navbar-menu {
-    display: none;
-    position: fixed;
+    display: none;                    // Hidden by default
+    position: fixed;                  // Fixed positioning
     top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
-    background-color: $bg-color;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
+    right: -100%;                     // Off-screen to the right
+    width: 80%;                       // 80% of screen width
+    max-width: 300px;                 // Maximum 300px wide
+    height: 100vh;                    // Full viewport height
+    background-color: rgba(17, 22, 19, 0.95);  // Semi-transparent dark background
+    backdrop-filter: blur(10px);      // Blur effect
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);  // Left shadow
+    z-index: 1001;                    // Above header
     padding: $spacing-unit * 4 $spacing-unit * 2;
-    @include transition(right);
+    @include transition(right);        // Smooth slide animation
     
+    // Active State
+    // When menu is open, slides in from right
     &.active {
-        right: 0;
+        right: 0;  // Slides into view
     }
     
+    // Desktop View
+    // On tablets and up, menu is always visible and inline
     @include media-query($breakpoint-md) {
-        position: static;
+        position: static;              // Normal flow
         width: auto;
         height: auto;
         max-width: none;
-        background-color: transparent;
+        background-color: transparent; // No background
         box-shadow: none;
         padding: 0;
-        display: block;
+        display: block;                // Always visible
     }
 }
 
+// Mobile Menu Overlay
+// Dark overlay that appears behind mobile menu
 .mobile-overlay {
-    display: none;
-    position: fixed;
+    display: none;                    // Hidden by default
+    position: fixed;                  // Covers entire screen
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    opacity: 0;
-    @include transition(opacity);
+    background-color: rgba(0, 0, 0, 0.5);  // Semi-transparent black
+    z-index: 1000;                    // Below menu, above content
+    opacity: 0;                       // Initially invisible
+    @include transition(opacity);      // Fade in/out
     
+    // Active State
+    // Shows overlay when menu is open
     &.active {
         display: block;
-        opacity: 1;
+        opacity: 1;  // Fully visible
     }
     
+    // Desktop View
+    // No overlay needed on desktop
     @include media-query($breakpoint-md) {
         display: none !important;
     }
 }
 
+// Body Menu Open State
+// Prevents scrolling when mobile menu is open
 body.menu-open {
-    overflow: hidden;
+    overflow: hidden;  // Disables scrolling
     
     @include media-query($breakpoint-md) {
-        overflow: auto;
+        overflow: auto;  // Allows scrolling on desktop
     }
 }
 
+// Navigation Links Container
+// Flexbox container for navigation links
 .navbar-nav {
     display: flex;
-    list-style: none;
-    gap: $spacing-unit * 2;
+    list-style: none;                 // Removes bullet points
+    gap: $spacing-unit * 2.5;         // Space between links
     align-items: center;
-    flex-direction: column;
+    flex-direction: column;            // Stacked vertically on mobile
     
     @include media-query($breakpoint-md) {
-        flex-direction: row;
+        flex-direction: row;           // Horizontal on desktop
+        gap: $spacing-unit * 3;        // More space on desktop
     }
 }
 
+// Navigation Links
+// Individual menu link styling with animated underline
 .nav-link {
-    color: $text-color;
+    color: rgba(255, 255, 255, 0.9);  // Near-white text
     font-weight: 500;
-    @include transition(color);
+    font-size: 0.9375rem;
+    padding: $spacing-unit * 0.5 $spacing-unit;
+    @include transition(all, 0.2s, ease);
+    position: relative;                // For pseudo-element positioning
     
+    // Hover and Active States
+    // Changes color to green accent
     &:hover,
     &.active {
-        color: $primary-color;
+        color: #61cf5a;  // Green accent color
+    }
+    
+    // Animated Underline
+    // Creates animated underline effect on hover/active
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: $spacing-unit;
+        width: 0;                      // Starts at 0 width
+        height: 2px;
+        background-color: #61cf5a;     // Green underline
+        @include transition(width, 0.3s, ease);
+    }
+    
+    // Expand Underline
+    // Expands underline to full width on hover/active
+    &:hover::after,
+    &.active::after {
+        width: calc(100% - #{$spacing-unit * 2});  // Full width minus padding
     }
 }
 
+// Mobile Menu Toggle Button
+// Hamburger menu button for mobile devices
 .mobile-menu-toggle {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: column;            // Stacks hamburger lines vertically
+    gap: 4px;                          // Space between lines
     background: none;
     border: none;
     cursor: pointer;
     padding: $spacing-unit * 0.5;
+    z-index: 1002;                     // Above menu
     
+    // Desktop View
+    // Hidden on desktop (menu is always visible)
     @include media-query($breakpoint-md) {
         display: none;
     }
     
+    // Hamburger Lines
+    // Three horizontal lines that form hamburger icon
     span {
         width: 24px;
         height: 2px;
@@ -285,173 +446,330 @@ body.menu-open {
         @include transition(all);
     }
     
+    // Active State (X Icon)
+    // Transforms hamburger into X when menu is open
     &.active {
         span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(5px, 5px);  // Top line rotates
         }
         span:nth-child(2) {
-            opacity: 0;
+            opacity: 0;  // Middle line disappears
         }
         span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
+            transform: rotate(-45deg) translate(7px, -6px);  // Bottom line rotates
         }
     }
 }
 
+// Mobile Menu Toggle - Dark Theme
+// Ensures hamburger lines are visible on dark header
+[data-theme="dark"] .mobile-menu-toggle span {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-menu-toggle span {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+// Theme Toggle Button
+// Button to switch between light and dark themes
 .theme-toggle {
     background: none;
     border: none;
-    color: $text-color;
-    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);  // White icon
+    font-size: 1.25rem;                // Icon size
     cursor: pointer;
     padding: $spacing-unit * 0.5;
-    @include transition(color);
+    @include transition(all);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;                       // Touch-friendly size
+    height: 32px;
+    border-radius: 20px;              // Rounded button
+    position: relative;
+    z-index: 1002;                     // Above other elements
+    flex-shrink: 0;                    // Prevents shrinking
     
+    // Hover State
+    // Adds background and changes color on hover
     &:hover {
-        color: $primary-color;
+        background-color: rgba(255, 255, 255, 0.1);  // Light background
+        color: #61cf5a;                                // Green accent
+    }
+    
+    @include media-query($breakpoint-md) {
+        margin-left: $spacing-unit;
     }
 }
 
-// Hero Section
+// ============================================================================
+// HERO SECTION
+// ============================================================================
+// Large banner section at the top of pages
+
+// Hero Section Container
+// Full-width banner section with background image support
 .hero-section {
-    position: relative;
-    min-height: 60vh;
+    position: relative;                // For absolute positioning of overlay
+    min-height: 70vh;                  // Minimum 70% of viewport height
     display: flex;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-color: $bg-dark;
-    color: white;
-    padding: $spacing-unit * 4 0;
+    align-items: center;               // Vertically centers content
+    background-size: cover;            // Covers entire area
+    background-position: center;      // Centers background image
+    background-color: $bg-color;       // Fallback background
+    color: $text-color;
+    padding: $spacing-unit * 6 0;      // Vertical padding
+    
+    @include media-query($breakpoint-md) {
+        min-height: 80vh;              // 80% height on larger screens
+        padding: $spacing-unit * 8 0;  // More padding on desktop
+    }
 }
 
+// Hero Overlay
+// Dark overlay on top of background image for text readability
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);  // Semi-transparent black
 }
 
+// Hero Content Container
+// Wrapper for hero text content
 .hero-content {
     position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
+    z-index: 1;                        // Above overlay
+    max-width: 900px;                  // Limits content width
+    margin: 0 auto;                     // Centers horizontally
 }
 
+// Hero Title
+// Main heading in hero section
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;                 // Large font size
+    font-weight: 700;                  // Bold
     margin-bottom: $spacing-unit * 1.5;
-    color: white;
+    color: $text-color;
+    letter-spacing: -0.03em;           // Tighter letter spacing
+    line-height: 1.1;                  // Tight line height
     
     @include media-query($breakpoint-md) {
-        font-size: 4rem;
+        font-size: 5rem;               // Even larger on desktop
     }
 }
 
+// Hero Subtitle
+// Secondary text below hero title
 .hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: $spacing-unit * 2;
-    opacity: 0.9;
+    font-size: 1.375rem;
+    margin-bottom: $spacing-unit * 2.5;
+    color: $text-light;                // Lighter gray
+    line-height: 1.6;
+    font-weight: 400;                   // Regular weight
 }
 
-// Sections
+// ============================================================================
+// SECTIONS
+// ============================================================================
+// Reusable section containers with consistent spacing
+
+// Section Container
+// Standard section wrapper with vertical padding
 .section {
-    padding: $spacing-unit * 5 0;
+    padding: $spacing-unit * 6 0;      // Vertical padding
+    
+    @include media-query($breakpoint-md) {
+        padding: $spacing-unit * 8 0;  // More padding on desktop
+    }
 }
 
+// Section Title
+// Centered title and description for sections
 .section-title {
     text-align: center;
-    margin-bottom: $spacing-unit * 3;
+    margin-bottom: $spacing-unit * 4;
     
+    // Section Heading
     h2 {
         font-size: 2.5rem;
-        margin-bottom: $spacing-unit * 0.5;
+        font-weight: 600;
+        margin-bottom: $spacing-unit;
+        letter-spacing: -0.02em;
+        
+        @include media-query($breakpoint-md) {
+            font-size: 3rem;           // Larger on desktop
+        }
     }
     
+    // Section Description
     p {
         font-size: 1.125rem;
         color: $text-light;
-        max-width: 600px;
-        margin: 0 auto;
+        max-width: 600px;              // Limits width for readability
+        margin: 0 auto;                 // Centers
+        line-height: 1.6;
     }
 }
 
-// Cards
+// ============================================================================
+// CARDS
+// ============================================================================
+// Card components with glassmorphism hover effects
+
+// Card Grid Container
+// Responsive grid layout for cards
 .card-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-unit * 2;
+    grid-template-columns: 1fr;        // Single column on mobile
+    gap: $spacing-unit * 2;            // Space between cards
     
     @include media-query($breakpoint-md) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);  // Two columns on tablets
     }
     
     @include media-query($breakpoint-lg) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);  // Three columns on desktop
     }
 }
 
+// Card Component
+// Individual card with glassmorphism hover effect
 .card {
-    background-color: $bg-color;
-    border: 1px solid $border-color;
-    border-radius: 0.5rem;
-    padding: $spacing-unit * 2;
-    @include transition(all);
+    background-color: $bg-color;      // White background
+    border: 1px solid $border-color;   // Light border
+    border-radius: 0.75rem;            // Rounded corners
+    padding: $spacing-unit * 2.5;     // Internal padding
+    @include transition(all, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));  // Smooth transitions
+    position: relative;                // For pseudo-element positioning
+    overflow: hidden;                  // Clips content
+    backdrop-filter: blur(0px);       // No blur initially
     
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    // Glass Pane Effect (Pseudo-element)
+    // Creates glassmorphism effect on hover using ::before
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0);  // Transparent initially
+        backdrop-filter: blur(0px);          // No blur initially
+        -webkit-backdrop-filter: blur(0px);
+        border-radius: 0.75rem;
+        opacity: 0;                    // Invisible initially
+        @include transition(all, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));
+        z-index: 0;                   // Behind card content
+        border: 1px solid transparent;
     }
     
+    // Hover State
+    // Lifts card and applies glassmorphism effect
+    &:hover {
+        transform: translateY(-8px);   // Lifts card up
+        border-color: rgba(0, 0, 0, 0.1);
+        
+        // Activate Glass Effect
+        &::before {
+            opacity: 1;                               // Fully visible
+            background: rgba(255, 255, 255, 0.7);     // Semi-transparent white
+            backdrop-filter: blur(20px);               // Strong blur
+            -webkit-backdrop-filter: blur(20px);
+            border-color: rgba(255, 255, 255, 0.3);   // Light border
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 
+                       0 0 0 1px rgba(255, 255, 255, 0.5) inset;  // Shadow and inset border
+        }
+    }
+    
+    // Card Content
+    // Ensures all card content appears above glass effect
+    > * {
+        position: relative;
+        z-index: 1;                   // Above ::before pseudo-element
+    }
+    
+    // Card Icon
+    // Large icon at top of card
     .card-icon {
         font-size: 2.5rem;
         color: $primary-color;
         margin-bottom: $spacing-unit;
     }
     
+    // Card Title
+    // Heading within card
     .card-title {
         font-size: 1.5rem;
         margin-bottom: $spacing-unit * 0.75;
+        font-weight: 600;
     }
     
+    // Card Description
+    // Body text within card
     .card-description {
         color: $text-light;
+        line-height: 1.6;
+    }
+    
+    // Card Images
+    // Images within cards
+    img {
+        border-radius: 0.5rem;        // Rounded corners
+        margin-bottom: $spacing-unit * 1.5;
+        width: 100%;                   // Full width
+        height: auto;                  // Maintains aspect ratio
     }
 }
 
-// Page Content
+// ============================================================================
+// PAGE CONTENT
+// ============================================================================
+// Styling for individual page content areas
+
+// Page Content Container
+// Main content area for pages
 .page-content {
-    padding: $spacing-unit * 4 0;
+    padding: $spacing-unit * 4 0;     // Vertical padding
 }
 
+// Breadcrumb Navigation
+// Navigation breadcrumb container
 .breadcrumb-nav {
     margin-bottom: $spacing-unit * 2;
 }
 
+// Breadcrumb List
+// Horizontal list showing page hierarchy
 .breadcrumb {
     display: flex;
-    list-style: none;
-    gap: $spacing-unit * 0.5;
-    font-size: 0.875rem;
+    list-style: none;                 // Removes bullet points
+    gap: $spacing-unit * 0.5;         // Space between items
+    font-size: 0.875rem;              // Smaller text
     
+    // Breadcrumb Item
     .breadcrumb-item {
         color: $text-light;
         
+        // Breadcrumb Links
         a {
             color: $text-light;
             
             &:hover {
-                color: $primary-color;
+                color: $primary-color;  // Darker on hover
             }
         }
         
+        // Active Item (Current Page)
         &.active {
-            color: $text-color;
+            color: $text-color;        // Darker for current page
         }
         
+        // Separator
+        // Adds "/" separator between items
         &:not(:last-child)::after {
             content: '/';
             margin-left: $spacing-unit * 0.5;
@@ -460,231 +778,384 @@ body.menu-open {
     }
 }
 
-// Footer
+// ============================================================================
+// FOOTER
+// ============================================================================
+// Site footer with links and social media
+
+// Site Footer Container
+// Main footer wrapper with dark background
 .site-footer {
-    background-color: $bg-dark;
-    color: white;
-    padding: $spacing-unit * 4 0 $spacing-unit * 2;
-    margin-top: $spacing-unit * 5;
+    background-color: $bg-dark;       // Dark background
+    color: white;                      // White text
+    padding: $spacing-unit * 4 0 $spacing-unit * 2;  // Vertical padding
+    margin-top: $spacing-unit * 5;     // Top margin
 }
 
+// Footer Content Container
+// Wrapper for footer sections
 .footer-content {
     margin-bottom: $spacing-unit * 3;
 }
 
+// Footer Section
+// Individual section within footer
 .footer-section {
     margin-bottom: $spacing-unit * 2;
 }
 
+// Footer Title
+// Section heading in footer
 .footer-title {
     font-size: 1.5rem;
     margin-bottom: $spacing-unit;
     color: white;
 }
 
+// Footer Description
+// Descriptive text in footer
 .footer-description {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7);   // Semi-transparent white
     margin-bottom: $spacing-unit * 1.5;
 }
 
+// Social Media Links
+// Container for social media icons
 .social-links {
     display: flex;
-    gap: $spacing-unit;
+    gap: $spacing-unit;               // Space between icons
     
+    // Social Link Buttons
+    // Circular buttons for social media links
     a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
+        width: 40px;                   // Fixed size
         height: 40px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);  // Semi-transparent background
+        border-radius: 50%;            // Perfect circle
         color: white;
         @include transition(all);
         
+        // Hover State
         &:hover {
-            background-color: $primary-color;
-            transform: translateY(-2px);
+            background-color: $primary-color;  // Black background
+            transform: translateY(-2px);       // Lifts up slightly
         }
     }
 }
 
+// Footer Menu Title
+// Heading for footer navigation sections
 .footer-menu-title {
     font-size: 1.125rem;
     margin-bottom: $spacing-unit;
     color: white;
 }
 
+// Footer Menu List
+// Navigation list in footer
 .footer-menu {
-    list-style: none;
+    list-style: none;                 // Removes bullet points
     
+    // Footer Menu Items
     li {
         margin-bottom: $spacing-unit * 0.5;
         
+        // Footer Menu Links
         a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.7);  // Semi-transparent white
             @include transition(color);
             
             &:hover {
-                color: white;
+                color: white;          // Fully white on hover
             }
         }
     }
 }
 
+// Footer Bottom Section
+// Copyright and bottom footer content
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);  // Top border
     padding-top: $spacing-unit * 2;
-    text-align: center;
+    text-align: center;               // Centered text
 }
 
+// Copyright Text
+// Copyright notice styling
 .copyright {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);  // Semi-transparent white
+    font-size: 0.875rem;               // Smaller text
 }
 
-// Blog
+// ============================================================================
+// BLOG
+// ============================================================================
+// Blog listing and post page styling
+
+// Post List Container
+// Container for blog post listings
 .post-list {
+    // Individual Post Item
+    // Each blog post in the list
     .post-item {
         margin-bottom: $spacing-unit * 3;
         padding-bottom: $spacing-unit * 3;
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;  // Separator line
         
+        // Remove border from last item
         &:last-child {
             border-bottom: none;
         }
     }
     
+    // Post Title
+    // Blog post heading in list
     .post-title {
         font-size: 2rem;
         margin-bottom: $spacing-unit * 0.5;
         
+        // Post Title Link
         a {
             color: $text-color;
             
             &:hover {
-                color: $primary-color;
+                color: $primary-color;  // Black on hover
             }
         }
     }
     
+    // Post Metadata
+    // Date, author, category info
     .post-meta {
         display: flex;
-        gap: $spacing-unit * 1.5;
-        font-size: 0.875rem;
-        color: $text-light;
+        gap: $spacing-unit * 1.5;     // Space between meta items
+        font-size: 0.875rem;           // Smaller text
+        color: $text-light;            // Gray text
         margin-bottom: $spacing-unit;
         
+        // Meta Item
         span {
             display: flex;
             align-items: center;
-            gap: $spacing-unit * 0.25;
+            gap: $spacing-unit * 0.25;  // Space between icon and text
         }
     }
     
+    // Post Excerpt
+    // Preview text from blog post
     .post-excerpt {
         color: $text-light;
     }
 }
 
-// Post Page
+// ============================================================================
+// POST PAGE
+// ============================================================================
+// Individual blog post page styling
+
+// Post Page Container
+// Main container for single post pages
 .post-page {
+    // Post Header
+    // Title and metadata section
     .post-header {
         margin-bottom: $spacing-unit * 3;
     }
     
+    // Post Title
+    // Main heading on post page
     .post-title {
-        font-size: 3rem;
+        font-size: 3rem;               // Large title
         margin-bottom: $spacing-unit;
     }
     
+    // Post Body Content
+    // Main article content
     .post-body {
-        font-size: 1.125rem;
-        line-height: 1.8;
+        font-size: 1.125rem;           // Larger body text
+        line-height: 1.8;               // Comfortable line height
         
+        // Headings in Post Body
         h2, h3, h4 {
-            margin-top: $spacing-unit * 2;
+            margin-top: $spacing-unit * 2;  // Space above headings
             margin-bottom: $spacing-unit;
         }
         
+        // Images in Post Body
         img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            margin: $spacing-unit * 2 0;
+            max-width: 100%;           // Responsive images
+            height: auto;               // Maintains aspect ratio
+            border-radius: 0.5rem;     // Rounded corners
+            margin: $spacing-unit * 2 0;  // Vertical margin
         }
     }
     
+    // Post Tags
+    // Tag list for categorizing posts
     .post-tags {
         display: flex;
-        flex-wrap: wrap;
-        gap: $spacing-unit * 0.5;
+        flex-wrap: wrap;               // Wraps to new line if needed
+        gap: $spacing-unit * 0.5;      // Space between tags
         margin-bottom: $spacing-unit * 2;
         
+        // Individual Tag
         .tag {
             padding: $spacing-unit * 0.25 $spacing-unit * 0.75;
-            background-color: rgba($primary-color, 0.1);
-            color: $primary-color;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
+            background-color: rgba($primary-color, 0.1);  // Light black background
+            color: $primary-color;     // Black text
+            border-radius: 0.25rem;     // Slightly rounded
+            font-size: 0.875rem;       // Smaller text
         }
     }
     
+    // Post Navigation
+    // Previous/Next post links
     .post-navigation {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-between;  // Previous on left, Next on right
         margin-top: $spacing-unit * 4;
         padding-top: $spacing-unit * 2;
-        border-top: 1px solid $border-color;
+        border-top: 1px solid $border-color;  // Top separator
         
+        // Navigation Links
         .nav-link {
             display: flex;
             align-items: center;
-            gap: $spacing-unit * 0.5;
+            gap: $spacing-unit * 0.5;  // Space between icon and text
             color: $text-color;
             
             &:hover {
-                color: $primary-color;
+                color: $primary-color;  // Black on hover
             }
         }
     }
 }
 
-// Dark Mode
+// ============================================================================
+// DARK MODE
+// ============================================================================
+// Dark theme overrides for all components
+// Activated when [data-theme="dark"] attribute is present on html/body
+
 [data-theme="dark"] {
+    // Body Dark Mode
+    // Dark background and light text
     body {
-        background-color: $bg-dark;
-        color: white;
+        background-color: $bg-dark;   // Near-black background
+        color: #e5e5e5;                // Light gray text
     }
     
+    // Headings Dark Mode
+    // White headings for contrast
     h1, h2, h3, h4, h5, h6 {
-        color: white;
+        color: #ffffff;
     }
     
+    // Header Dark Mode
+    // Maintains same appearance (already dark)
     .site-header {
-        background-color: $bg-dark;
+        background-color: rgba(17, 22, 19, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         
         &.transparent.scrolled {
-            background-color: $bg-dark;
+            background-color: rgba(17, 22, 19, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
     }
     
-    .card {
-        background-color: lighten($bg-dark, 5%);
-        border-color: rgba(255, 255, 255, 0.1);
+    // Hero Section Dark Mode
+    // White text for visibility on dark background
+    .hero-section {
+        color: #ffffff;
+        
+        .hero-title {
+            color: #ffffff;
+        }
+        
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.8);  // Slightly transparent white
+        }
     }
     
+    // Cards Dark Mode
+    // Dark card background with adjusted glass effect
+    .card {
+        background-color: $bg-dark-card;  // Dark gray background
+        border-color: $border-dark;        // Subtle white border
+        
+        &::before {
+            background: rgba(255, 255, 255, 0);  // Transparent initially
+        }
+        
+        // Hover State Dark Mode
+        &:hover {
+            border-color: rgba(255, 255, 255, 0.2);  // Lighter border
+            
+            &::before {
+                background: rgba(255, 255, 255, 0.1);  // Subtle white overlay
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-color: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                           0 0 0 1px rgba(255, 255, 255, 0.1) inset;  // Darker shadow
+            }
+        }
+    }
+    
+    // Theme Toggle Dark Mode
+    // Light text for visibility
+    .theme-toggle {
+        color: #e5e5e5;
+        
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+    }
+    
+    // Navigation Links Dark Mode
+    // Light text for visibility
+    .nav-link {
+        color: #e5e5e5;
+        
+        &:hover,
+        &.active {
+            color: #ffffff;
+        }
+    }
+    
+    // Breadcrumb Dark Mode
+    // Light text for visibility
     .breadcrumb-item {
         color: rgba(255, 255, 255, 0.7);
         
         &.active {
-            color: white;
+            color: #ffffff;
         }
+    }
+    
+    // Text Light Utility Dark Mode
+    // Adjusted for dark backgrounds
+    .text-light {
+        color: rgba(255, 255, 255, 0.6) !important;
     }
 }
 
-// Responsive
+// ============================================================================
+// RESPONSIVE UTILITIES
+// ============================================================================
+// Additional responsive styles
+
 @include media-query($breakpoint-md) {
+    // Navbar Desktop Layout
+    // Ensures proper flexbox layout on desktop
     .navbar {
         display: flex;
         justify-content: space-between;
@@ -692,44 +1163,62 @@ body.menu-open {
     }
 }
 
-// Utility Classes
+// ============================================================================
+// UTILITY CLASSES
+// ============================================================================
+// Helper classes for common styling patterns
+
+// Text Alignment
+// Centers text content
 .text-center {
     text-align: center;
 }
 
-.mt-1 { margin-top: $spacing-unit; }
-.mt-2 { margin-top: $spacing-unit * 2; }
-.mt-3 { margin-top: $spacing-unit * 3; }
-.mb-1 { margin-bottom: $spacing-unit; }
-.mb-2 { margin-bottom: $spacing-unit * 2; }
-.mb-3 { margin-bottom: $spacing-unit * 3; }
+// Margin Top Utilities
+// Adds top margin spacing
+.mt-1 { margin-top: $spacing-unit; }      // 1rem top margin
+.mt-2 { margin-top: $spacing-unit * 2; }  // 2rem top margin
+.mt-3 { margin-top: $spacing-unit * 3; }  // 3rem top margin
 
+// Margin Bottom Utilities
+// Adds bottom margin spacing
+.mb-1 { margin-bottom: $spacing-unit; }      // 1rem bottom margin
+.mb-2 { margin-bottom: $spacing-unit * 2; }  // 2rem bottom margin
+.mb-3 { margin-bottom: $spacing-unit * 3; }  // 3rem bottom margin
+
+// Row Container
+// Flexbox row container for grid layouts
 .row {
     display: flex;
-    flex-wrap: wrap;
-    margin: 0 -$spacing-unit;
+    flex-wrap: wrap;                    // Allows wrapping
+    margin: 0 -$spacing-unit;            // Negative margin for gutters
 }
 
+// Column - Medium (4/12 width)
+// 33.33% width column on medium screens and up
 .col-md-4 {
-    flex: 0 0 100%;
-    padding: 0 $spacing-unit;
+    flex: 0 0 100%;                     // Full width on mobile
+    padding: 0 $spacing-unit;           // Horizontal padding
     
     @include media-query($breakpoint-md) {
-        flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;          // 1/3 width on tablets and up
     }
 }
 
+// Column - Large (8/12 width)
+// 66.67% width column on large screens and up
 .col-lg-8 {
-    flex: 0 0 100%;
-    padding: 0 $spacing-unit;
+    flex: 0 0 100%;                     // Full width on mobile
+    padding: 0 $spacing-unit;           // Horizontal padding
     
     @include media-query($breakpoint-lg) {
-        flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;          // 2/3 width on desktop
     }
 }
 
+// Auto Margin Horizontal
+// Centers element horizontally using auto margins
 .mx-auto {
     margin-left: auto;
     margin-right: auto;
 }
-

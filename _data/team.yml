@@ -1,9 +1,10 @@
-- name: "John Doe"
-  role: "Full-Stack Developer"
-  bio: "Passionate about creating beautiful and functional web experiences."
-  image: "/assets/images/team-1.jpg"
+- name: "Jack Shee"
+  role: "Full-Stack Developer & Data Scientist"
+  bio: "My goal is to transform complex data into insights via accessible and functional web-interfaces and data visualisations."
+  image: "/assets/images/nature_citation_network.jpg"
   social:
     github: "https://github.com/jackshee"
-    linkedin: "https://linkedin.com/in/johndoe"
-    twitter: "https://twitter.com/johndoe"
+    linkedin: "https://linkedin.com/in/jackshee/"
+    twitter: "https://x.com/jshee_f"
+
 

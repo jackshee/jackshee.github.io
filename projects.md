@@ -32,3 +32,4 @@ Here's a collection of projects I've worked on, ranging from web applications to
 {% endfor %}
 </div>
 
+

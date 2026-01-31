@@ -1,9 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" {% if site.dark_mode.enabled %}data-theme="auto"{% endif %}>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Apply theme immediately to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'auto';
+            const html = document.documentElement;
+            
+            if (savedTheme === 'auto') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+            } else {
+                html.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
     
     {% if page.title %}
         <title>{{ page.title }} | {{ site.title }}</title>
@@ -60,4 +75,5 @@
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
+
 

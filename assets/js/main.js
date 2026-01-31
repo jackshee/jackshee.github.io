@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const icon = themeToggle.querySelector('i');
         if (icon) {
             if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                icon.classList.remove('fa-regular', 'fa-moon');
+                icon.classList.add('fa-solid', 'fa-sun');
             } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                icon.classList.remove('fa-solid', 'fa-sun');
+                icon.classList.add('fa-regular', 'fa-moon');
             }
         }
     }
@@ -131,4 +131,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 

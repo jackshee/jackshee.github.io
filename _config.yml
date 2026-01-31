@@ -27,9 +27,9 @@ colors:
 
 # Typography
 fonts:
-  primary: "Inter"
-  secondary: "Playfair Display"
-  google_fonts: "Inter:wght@300;400;500;600;700|Playfair+Display:wght@400;700"
+  primary: "Space Grotesk"
+  secondary: "Space Grotesk"
+  google_fonts: "Space+Grotesk:wght@300;400;500;600;700"
 
 # Dark Mode
 dark_mode:
@@ -44,29 +44,23 @@ header:
 
 # Navigation
 navigation:
-  - name: "Home"
-    url: "/"
   - name: "About"
     url: "/about"
   - name: "Projects"
     url: "/projects"
-  - name: "Services"
-    url: "/services"
   - name: "Blog"
     url: "/blog"
-  - name: "Contact"
-    url: "/contact"
 
 # Social Links
 social:
   github: "https://github.com/jackshee"
-  linkedin: "https://linkedin.com/in/johndoe"
-  twitter: "https://twitter.com/johndoe"
-  email: "mailto:john.doe@example.com"
+  linkedin: "https://linkedin.com/in/jackshee/"
+  twitter: "https://x.com/jshee_f"
+  email: "mailto:shee.jack.97@gmail.com"
 
 # Footer
 footer:
-  copyright: "© 2025 John Doe. All rights reserved."
+  copyright: "© 2026 Jack Shee. All rights reserved."
   menus:
     - title: "Quick Links"
       links:
@@ -93,7 +87,7 @@ blog:
 # SEO
 seo:
   default_image: "/assets/images/og-image.jpg"
-  twitter_handle: "@johndoe"
+  twitter_handle: "@jshee_f"
 
 # Plugins
 plugins:
