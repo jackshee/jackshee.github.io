@@ -8,7 +8,7 @@
 // Primary colors used for buttons, links, and accents
 $primary-color: #000000;        // Main brand color (black)
 $secondary-color: #666666;      // Secondary text and UI elements
-$accent-color: #000000;         // Accent color (currently same as primary)
+$accent-color: #61cf5a;         // Accent color (green)
 $text-color: #1a1a1a;          // Main body text color (dark gray)
 $text-light: #666666;           // Lighter text for descriptions/secondary content
 $bg-color: #ffffff;             // Main background color (white)
@@ -68,6 +68,22 @@ $breakpoint-xl: 1200px;         // Extra large devices (large desktops)
     margin: 0;
     padding: 0;
     box-sizing: border-box;  // Includes padding and border in element width
+}
+
+// List Reset
+// Removes default list styling (bullets, indentation, etc.)
+ul, ol {
+    list-style: none;        // Removes bullets/numbers
+    list-style-type: none;   // Explicit removal of list style type
+    list-style-position: outside;  // Resets position
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;        // Removes any list styling
+    margin: 0;
+    padding: 0;
 }
 
 // HTML Element
@@ -299,11 +315,7 @@ a {
     right: -100%;                     // Off-screen to the right
     width: 80%;                       // 80% of screen width
     max-width: 300px;                 // Maximum 300px wide
-    height: 100vh;                    // Full viewport height
-    background-color: rgba(17, 22, 19, 0.95);  // Semi-transparent dark background
-    backdrop-filter: blur(10px);      // Blur effect
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);  // Left shadow
+    height: 100vh;                    // Full viewport height 
     z-index: 1001;                    // Above header
     padding: $spacing-unit * 4 $spacing-unit * 2;
     @include transition(right);        // Smooth slide animation
@@ -374,6 +386,7 @@ body.menu-open {
     gap: $spacing-unit * 2.5;         // Space between links
     align-items: center;
     flex-direction: column;            // Stacked vertically on mobile
+ 
     
     @include media-query($breakpoint-md) {
         flex-direction: row;           // Horizontal on desktop
@@ -395,7 +408,7 @@ body.menu-open {
     // Changes color to green accent
     &:hover,
     &.active {
-        color: #61cf5a;  // Green accent color
+        color: $accent-color;  // Green accent color
     }
     
     // Animated Underline
@@ -407,7 +420,7 @@ body.menu-open {
         left: $spacing-unit;
         width: 0;                      // Starts at 0 width
         height: 2px;
-        background-color: #61cf5a;     // Green underline
+        background-color: $accent-color;     // Green underline
         @include transition(width, 0.3s, ease);
     }
     

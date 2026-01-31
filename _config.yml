@@ -1,19 +1,19 @@
 # Site Settings
-title: "John Doe - Portfolio"
+title: "Jack Shee - Portfolio"
 description: "A minimal resume and portfolio website showcasing my work and experience"
 url: "https://jackshee.github.io"
 baseurl: ""
 
 # Author
 author:
-  name: "John Doe"
-  email: "john.doe@example.com"
+  name: "Jack Shee"
+  email: "jackshee97@gmail.com"
   bio: "Full-stack developer passionate about creating beautiful and functional web experiences"
   avatar: "/assets/images/avatar.jpg"
 
 # Logo
-logo: "/assets/images/logo.svg"
-logo_text: "John Doe"
+logo: "/assets/images/logo.png"
+logo_text: "Jack Shee"
 
 # Colors
 colors:
@@ -27,9 +27,9 @@ colors:
 
 # Typography
 fonts:
-  primary: "Space Grotesk"
-  secondary: "Space Grotesk"
-  google_fonts: "Space+Grotesk:wght@300;400;500;600;700"
+  primary: "Fira Code"
+  secondary: "Fira Code"
+  google_fonts: "Fira+Code:wght@300;400;500;600;700"
 
 # Dark Mode
 dark_mode:
