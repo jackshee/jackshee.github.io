@@ -248,6 +248,7 @@ a {
             background-color: $accent-color;  // Green accent color
             border-radius: 50%;               // Perfect circle
             flex-shrink: 0;                   // Prevents shrinking
+            margin-right: 0.625rem;           // Space between indicator and text
         }
         
         // Light Mode Hero Button
