@@ -1,41 +1,49 @@
 - title: "Real Estate Industry Project"
-  description: "Data engineering pipeline and analysis of the Victorian rental market in 2025, featuring comprehensive market insights and data processing workflows."
-  technologies: ["Python", "Jupyter Notebook", "Shell"]
+  description: "Data engineering pipeline and analysis of the Victorian rental market in 2025 delivering three key insights: i) Most important features of rental listings for predicting rental prices, ii) Highest percentage year-on-year growth suburbs, iii) Most affordable and liveable suburbs."
+  technologies: ["Python", "Jupyter Notebook", "XGBoost", "PySpark", "Pandas", "Scikit-learn", "GeoPandas", "Scrapy", "StatsModels"]
   url: "https://github.com/jackshee/real-estate-industry-project-public-version"
+  year: 2025
 
 - title: "NYC Congestion Pricing Policy Analysis"
   description: "ETL data engineering pipeline and analysis of the impact of the 2025 Congestion Pricing Policy on the For-Hire Vehicle and Yellow Taxi Industry in New York City using Differences-in-Differences methodology."
   technologies: ["Python", "Jupyter Notebook", "PySpark", "GeoPandas", "StatsModels"]
   url: "https://github.com/jackshee/congestion-pricing-policy-analysis-public-version"
+  year: 2025
 
-- title: "CISSA Catalyst Hackathon 2025"
-  description: "A beautiful weather dashboard that displays current conditions, forecasts, and weather maps with location-based services."
-  technologies: ["JavaScript", "OpenWeather API", "Chart.js"]
-  url: "https://github.com/jackshee/weather-dashboard"
+- title: "Systems Integration Modelling Graphical User Interface (SIMGUI)"
+  description: "An interactive node-based graph editor for building and simulating multi-physics models of complex systems based on ordinary differential equations using the BondGraphs engineering framework."
+  technologies: ["React", "Vite", "Drawflow", "Plotly.js", "Julia", "BondGraphs", "ModelingToolkit"]
+  url: "https://github.com/josephshim02/SIMGUI"
+  year: 2025
 
-- title: "Social Media Analytics"
+- title: "Dougie.ai"
   description: "Analytics platform for tracking social media performance with detailed insights, reports, and data visualization."
-  technologies: ["Python", "Django", "PostgreSQL", "D3.js"]
-  url: "https://github.com/jackshee/social-analytics"
+  technologies: ["React", "FastAPI", "Python", "Supabase", "Tesseract.js", "Chart.js", "Tailwind CSS", "Pixverse API"]
+  url: "https://github.com/jackshee/wit-hack"
+  year: 2025
 
-- title: "Portfolio Website"
-  description: "A modern, responsive portfolio website showcasing projects, skills, and experience with smooth animations and dark mode."
-  technologies: ["Jekyll", "SCSS", "JavaScript"]
-  url: "https://github.com/jackshee/portfolio"
+- title: "Lectin-Glycan Binding Analysis"
+  description: "Computational analysis of lectin-glycan interactions using deep learning models for nanobiosensor development in pancreatic cancer detection, leveraging glycowork and ESM protein embeddings."
+  technologies: ["Python", "Jupyter Notebook", "PyTorch", "glycowork", "ESM2", "scikit-learn", "pandas"]
+  url: "https://github.com/jackshee/LectinBinding"
+  year: 2024
 
 - title: "Recipe Sharing Platform"
   description: "A community-driven recipe sharing platform where users can create, share, and discover new recipes with ratings and reviews."
   technologies: ["Next.js", "Prisma", "PostgreSQL", "AWS S3"]
   url: "https://github.com/jackshee/recipe-platform"
+  year: 2023
 
 - title: "Fitness Tracker"
   description: "A comprehensive fitness tracking application with workout logging, progress tracking, and personalized recommendations."
   technologies: ["React Native", "Firebase", "Chart.js"]
   url: "https://github.com/jackshee/fitness-tracker"
+  year: 2023
 
 - title: "Blog CMS"
   description: "A headless CMS for managing blog content with markdown support, image optimization, and SEO features."
   technologies: ["Next.js", "Contentful", "GraphQL"]
   url: "https://github.com/jackshee/blog-cms"
+  year: 2023
 
 

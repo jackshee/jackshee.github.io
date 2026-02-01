@@ -287,4 +287,58 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Project Year Filter
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    if (filterButtons.length === 0 || projectCards.length === 0) return;
+    
+    filterButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const selectedYear = this.getAttribute('data-year');
+            
+            // Update active state of filter buttons
+            filterButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-year') === selectedYear) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter project cards
+            projectCards.forEach(function(card) {
+                const cardYear = card.getAttribute('data-year');
+                
+                if (selectedYear === 'all' || cardYear === selectedYear) {
+                    // Show card with fade-in animation
+                    card.style.display = '';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    
+                    // Trigger reflow for animation
+                    void card.offsetWidth;
+                    
+                    // Animate in
+                    setTimeout(function() {
+                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    // Hide card with fade-out animation
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(-10px)';
+                    
+                    // Hide after animation
+                    setTimeout(function() {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+});
+
 
