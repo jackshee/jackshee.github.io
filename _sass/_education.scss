@@ -1,0 +1,123 @@
+// ============================================================================
+// EDUCATION SECTION
+// ============================================================================
+// Education card grid styling
+
+// Education Card Grid Wrapper
+// 2-column, 2-row layout for education section on large screens
+.education-card-grid-wrapper {
+    .card-grid {
+        grid-template-columns: 1fr;        // Single column on mobile
+        margin-top: $spacing-unit * 2;     // Top margin
+        
+        @include media-query($breakpoint-md) {
+            grid-template-columns: repeat(2, 1fr);  // Two columns on tablets and up
+        }
+    }
+    
+    // Education Card
+    // Flex column layout for education cards
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    // Education Icon Container
+    // Centers the icon at the top of the card
+    .education-icon-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: $spacing-unit;
+    }
+    
+    // Education Icon
+    // Large icon with accent color
+    .education-icon {
+        color: $accent-color;
+        font-size: 2rem;
+    }
+    
+    // Education Card Title
+    // Centered title with adjusted margins
+    .card-title {
+        margin: 0 0 $spacing-unit * 0.5 0;
+        text-align: center;
+    }
+    
+    // Education Institution
+    // Institution name styling
+    .education-institution {
+        text-align: center;
+        color: $text-light;
+        font-size: 0.9375rem;
+        margin-bottom: $spacing-unit * 0.5;
+    }
+    
+    // Education Badges Container
+    // Flex container for period and status badges
+    .education-badges {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-unit * 0.5;
+        margin-bottom: $spacing-unit;
+        flex-wrap: wrap;
+    }
+    
+    // Education Badge (Period)
+    // Styling for period badge
+    .education-badge {
+        padding: $spacing-unit * 0.25 $spacing-unit * 0.75;
+        background-color: rgba(97, 207, 90, 0.1);
+        color: $accent-color;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    // Education Status Badge - Completed
+    .education-status-completed {
+        padding: $spacing-unit * 0.25 $spacing-unit * 0.75;
+        background-color: rgba(97, 207, 90, 0.1);
+        color: $accent-color;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    // Education Status Badge - Incomplete
+    .education-status-incomplete {
+        padding: $spacing-unit * 0.25 $spacing-unit * 0.75;
+        background-color: rgba(255, 193, 7, 0.1);
+        color: #ffc107;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    // Education Status Badge - Deferred
+    .education-status-deferred {
+        padding: $spacing-unit * 0.25 $spacing-unit * 0.75;
+        background-color: rgba(108, 117, 125, 0.1);
+        color: #6c757d;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    // Education Details List
+    // Unstyled list for education details
+    .education-details {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex: 1;
+    }
+    
+    // Education Details List Item
+    // Individual detail item with bullet
+    .education-detail-item {
+        margin-bottom: $spacing-unit * 0.75;
+        font-size: 0.9375rem;
+        line-height: 1.5;
+    }
+}

@@ -1,0 +1,23 @@
+// ============================================================================
+// MIXINS
+// ============================================================================
+// Reusable SCSS functions for common patterns
+
+// Transition Mixin
+// Creates smooth transitions for CSS properties
+// @param $property: CSS property to animate (default: all)
+// @param $duration: Animation duration (default: 0.3s)
+// @param $easing: Timing function (default: ease)
+@mixin transition($property: all, $duration: 0.3s, $easing: ease) {
+    transition: $property $duration $easing;
+}
+
+// Media Query Mixin
+// Creates responsive breakpoints with min-width
+// @param $breakpoint: Breakpoint value to use
+@mixin media-query($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+

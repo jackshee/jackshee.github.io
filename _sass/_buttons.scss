@@ -1,0 +1,105 @@
+// ============================================================================
+// BUTTONS
+// ============================================================================
+// Button component with multiple variants
+
+// Base Button Class
+// Common button styles applied to all button variants
+.btn {
+    display: inline-block;            // Allows width/height control
+    padding: $spacing-unit * 0.875 $spacing-unit * 2;  // Vertical and horizontal padding
+    font-size: 1rem;                  // Base font size
+    font-weight: 500;                  // Medium weight
+    text-align: center;                // Centers text
+    border: 1px solid $primary-color; // Black border
+    border-radius: 0.5rem;            // Rounded corners
+    cursor: pointer;                   // Pointer cursor on hover
+    @include transition(all, 0.2s, ease);  // Smooth transitions
+    text-decoration: none;             // Removes underline if used on links
+    
+    // Primary Button Variant
+    // Filled button with black background and white text
+    &.btn-primary {
+        background-color: $primary-color;  // Black background
+        color: white;                       // White text
+        border-color: $primary-color;      // Black border
+        
+        &:hover {
+            background-color: $accent-color;  // Accent color on hover
+            border-color: $accent-color;      // Accent color border on hover
+            transform: translateY(-2px);                  // Lifts button up
+            box-shadow: 0 8px 16px rgba(97, 207, 90, 0.3);  // Accent color shadow
+        }
+    }
+    
+    // Secondary Button Variant
+    // Outlined button with transparent background
+    &.btn-secondary {
+        background-color: transparent;     // No background
+        color: $primary-color;             // Black text
+        border-color: $primary-color;      // Black border
+        
+        &:hover {
+            background-color: $primary-color;  // Fills with black on hover
+            color: white;                      // Text turns white
+        }
+    }
+    
+    // Hero Button Variant
+    // Larger button for hero sections with glass pane effect
+    &.btn-hero {
+        padding: $spacing-unit * 1.125 $spacing-unit * 2.5;  // Larger padding
+        font-size: 1.125rem;                 // Slightly larger text
+        margin-top: $spacing-unit * 1.5;     // Top margin
+        display: inline-flex;                // Flex for status indicator alignment
+        align-items: center;                 // Vertical center alignment
+        gap: 0.625rem;                       // Space between indicator and text
+        
+        // Glass pane effect - override primary button styles
+        background: rgba(255, 255, 255, 0.1) !important;  // Semi-transparent white background
+        backdrop-filter: blur(10px);           // Blur effect for glass
+        -webkit-backdrop-filter: blur(10px);   // Safari support
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;  // Subtle white border
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);  // Soft shadow
+        
+        // Override primary button colors for glass effect
+        color: white !important;
+        background-color: transparent !important;
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.15) !important;  // Slightly more opaque on hover
+            border-color: rgba(255, 255, 255, 0.3) !important;  // Brighter border on hover
+            transform: translateY(-2px);              // Lifts button up
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);  // Enhanced shadow
+        }
+        
+        // Status indicator (green circle)
+        .status-indicator {
+            display: inline-block;
+            width: 0.5rem;                    // Smaller than text size
+            height: 0.5rem;
+            background-color: $accent-color;  // Green accent color
+            border-radius: 50%;               // Perfect circle
+            flex-shrink: 0;                   // Prevents shrinking
+            margin-right: 0.625rem;           // Space between indicator and text
+        }
+        
+        // Light Mode Hero Button
+        // Same pastel accent background as navbar in light mode
+        html:not([data-theme="dark"]) & {
+            background: rgba(97, 207, 90, 0.15) !important;  // Same pastel accent as navbar
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(97, 207, 90, 0.2) !important;  // Accent color border
+            color: $text-color !important;  // Dark text
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);  // Subtle shadow
+            
+            &:hover {
+                background: rgba(97, 207, 90, 0.2) !important;  // Slightly more opaque on hover
+                border-color: rgba(97, 207, 90, 0.25) !important;  // Slightly brighter border
+                box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);  // Enhanced shadow
+            }
+        }
+    }
+}
+

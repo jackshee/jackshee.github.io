@@ -1,0 +1,45 @@
+// ============================================================================
+// SECTIONS
+// ============================================================================
+// ============================================================================
+// SECTIONS
+// ============================================================================
+// Reusable section containers with consistent spacing
+
+// Section Container
+// Standard section wrapper with vertical padding
+.section {
+    padding: $spacing-unit * 6 0;      // Vertical padding
+    
+    @include media-query($breakpoint-md) {
+        padding: $spacing-unit * 8 0;  // More padding on desktop
+    }
+}
+
+// Section Title
+// Centered title and description for sections
+.section-title {
+    text-align: center;
+    margin-bottom: $spacing-unit * 4;
+    
+    // Section Heading
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: $spacing-unit;
+        letter-spacing: -0.02em;
+        
+        @include media-query($breakpoint-md) {
+            font-size: 3rem;           // Larger on desktop
+        }
+    }
+    
+    // Section Description
+    p {
+        font-size: 1.125rem;
+        color: $text-light;
+        max-width: 600px;              // Limits width for readability
+        margin: 0 auto;                 // Centers
+        line-height: 1.6;
+    }
+}

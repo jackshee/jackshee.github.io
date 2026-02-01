@@ -1,0 +1,48 @@
+// ============================================================================
+// RESET & BASE STYLES
+// ============================================================================
+// Global resets and base element styling
+
+// Universal Reset
+// Removes default margins, padding, and sets box-sizing for all elements
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  // Includes padding and border in element width
+}
+
+// List Reset
+// Removes default list styling (bullets, indentation, etc.)
+ul, ol {
+    list-style: none;        // Removes bullets/numbers
+    list-style-type: none;   // Explicit removal of list style type
+    list-style-position: outside;  // Resets position
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;        // Removes any list styling
+    margin: 0;
+    padding: 0;
+}
+
+// HTML Element
+// Enables smooth scrolling behavior for anchor links
+html {
+    scroll-behavior: smooth;
+}
+
+// Body Element
+// Sets base typography, colors, and background for the entire page
+body {
+    font-family: $font-primary;      // Uses Fira Code font stack
+    font-size: 16px;                  // Base font size
+    line-height: 1.7;                 // Comfortable reading line height
+    color: $text-color;                // Main text color
+    background-color: $bg-color;       // White background
+    @include transition(background-color, 0.3s);  // Smooth theme transitions
+    -webkit-font-smoothing: antialiased;  // Better font rendering on macOS
+    -moz-osx-font-smoothing: grayscale;   // Better font rendering on Firefox/macOS
+}
+

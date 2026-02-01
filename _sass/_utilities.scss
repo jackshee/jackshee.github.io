@@ -1,0 +1,80 @@
+// ============================================================================
+// RESPONSIVE UTILITIES
+// ============================================================================
+// ============================================================================
+// RESPONSIVE UTILITIES
+// ============================================================================
+// Additional responsive styles
+
+@include media-query($breakpoint-md) {
+    // Navbar Desktop Layout
+    // Ensures proper flexbox layout on desktop
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+// ============================================================================
+// UTILITY CLASSES
+// ============================================================================
+// ============================================================================
+// UTILITY CLASSES
+// ============================================================================
+// Helper classes for common styling patterns
+
+// Text Alignment
+// Centers text content
+.text-center {
+    text-align: center;
+}
+
+// Margin Top Utilities
+// Adds top margin spacing
+.mt-1 { margin-top: $spacing-unit; }      // 1rem top margin
+.mt-2 { margin-top: $spacing-unit * 2; }  // 2rem top margin
+.mt-3 { margin-top: $spacing-unit * 3; }  // 3rem top margin
+
+// Margin Bottom Utilities
+// Adds bottom margin spacing
+.mb-1 { margin-bottom: $spacing-unit; }      // 1rem bottom margin
+.mb-2 { margin-bottom: $spacing-unit * 2; }  // 2rem bottom margin
+.mb-3 { margin-bottom: $spacing-unit * 3; }  // 3rem bottom margin
+
+// Row Container
+// Flexbox row container for grid layouts
+.row {
+    display: flex;
+    flex-wrap: wrap;                    // Allows wrapping
+    margin: 0 -$spacing-unit;            // Negative margin for gutters
+}
+
+// Column - Medium (4/12 width)
+// 33.33% width column on medium screens and up
+.col-md-4 {
+    flex: 0 0 100%;                     // Full width on mobile
+    padding: 0 $spacing-unit;           // Horizontal padding
+    
+    @include media-query($breakpoint-md) {
+        flex: 0 0 33.333333%;          // 1/3 width on tablets and up
+    }
+}
+
+// Column - Large (8/12 width)
+// 66.67% width column on large screens and up
+.col-lg-8 {
+    flex: 0 0 100%;                     // Full width on mobile
+    padding: 0 $spacing-unit;           // Horizontal padding
+    
+    @include media-query($breakpoint-lg) {
+        flex: 0 0 66.666667%;          // 2/3 width on desktop
+    }
+}
+
+// Auto Margin Horizontal
+// Centers element horizontally using auto margins
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}

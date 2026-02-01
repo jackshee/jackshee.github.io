@@ -1,0 +1,114 @@
+// ============================================================================
+// FOOTER
+// ============================================================================
+// ============================================================================
+// FOOTER
+// ============================================================================
+// Site footer with links and social media
+
+// Site Footer Container
+// Main footer wrapper with dark background
+.site-footer {
+    background-color: $bg-dark;       // Dark background
+    color: white;                      // White text
+    padding: $spacing-unit * 4 0 $spacing-unit * 2;  // Vertical padding
+    margin-top: $spacing-unit * 5;     // Top margin
+}
+
+// Footer Content Container
+// Wrapper for footer sections
+.footer-content {
+    margin-bottom: $spacing-unit * 3;
+}
+
+// Footer Section
+// Individual section within footer
+.footer-section {
+    margin-bottom: $spacing-unit * 2;
+}
+
+// Footer Title
+// Section heading in footer
+.footer-title {
+    font-size: 1.5rem;
+    margin-bottom: $spacing-unit;
+    color: white;
+}
+
+// Footer Description
+// Descriptive text in footer
+.footer-description {
+    color: rgba(255, 255, 255, 0.7);   // Semi-transparent white
+    margin-bottom: $spacing-unit * 1.5;
+}
+
+// Social Media Links
+// Container for social media icons
+.social-links {
+    display: flex;
+    gap: $spacing-unit;               // Space between icons
+    
+    // Social Link Buttons
+    // Circular buttons for social media links
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;                   // Fixed size
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);  // Semi-transparent background
+        border-radius: 50%;            // Perfect circle
+        color: white;
+        @include transition(all);
+        
+        // Hover State
+        &:hover {
+            background-color: $primary-color;  // Black background
+            transform: translateY(-2px);       // Lifts up slightly
+        }
+    }
+}
+
+// Footer Menu Title
+// Heading for footer navigation sections
+.footer-menu-title {
+    font-size: 1.125rem;
+    margin-bottom: $spacing-unit;
+    color: white;
+}
+
+// Footer Menu List
+// Navigation list in footer
+.footer-menu {
+    list-style: none;                 // Removes bullet points
+    
+    // Footer Menu Items
+    li {
+        margin-bottom: $spacing-unit * 0.5;
+        
+        // Footer Menu Links
+        a {
+            color: rgba(255, 255, 255, 0.7);  // Semi-transparent white
+            @include transition(color);
+            
+            &:hover {
+                color: white;          // Fully white on hover
+            }
+        }
+    }
+}
+
+// Footer Bottom Section
+// Copyright and bottom footer content
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);  // Top border
+    padding-top: $spacing-unit * 2;
+    text-align: center;               // Centered text
+}
+
+// Copyright Text
+// Copyright notice styling
+.copyright {
+    color: rgba(255, 255, 255, 0.7);  // Semi-transparent white
+    font-size: 0.875rem;               // Smaller text
+}

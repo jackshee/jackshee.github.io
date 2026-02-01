@@ -1,0 +1,237 @@
+// ============================================================================
+// HERO SECTION
+// ============================================================================
+// ============================================================================
+// HERO SECTION
+// ============================================================================
+// Large banner section at the top of pages
+
+// Hero Section Container
+// Full-width banner section with background image support
+.hero-section {
+    position: relative;                // For absolute positioning of overlay
+    min-height: 70vh;                  // Minimum 70% of viewport height
+    display: flex;
+    align-items: center;               // Vertically centers content
+    background-size: cover;            // Covers entire area
+    background-position: center;      // Centers background image
+    background-color: $bg-color;       // Fallback background
+    color: $text-color;
+    padding: $spacing-unit * 6 0;      // Vertical padding
+    
+    // Light Mode Hero Background
+    // White background in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: $bg-color;  // White background
+    }
+    
+    // Dark Mode Hero Background
+    // Black background in dark mode
+    [data-theme="dark"] & {
+        background-color: $bg-dark;  // Black background
+    }
+    
+    @include media-query($breakpoint-md) {
+        min-height: 80vh;              // 80% height on larger screens
+        padding: $spacing-unit * 8 0;  // More padding on desktop
+    }
+}
+
+// Hero Overlay
+// Dark overlay on top of background image for text readability
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);  // Semi-transparent black
+    z-index: 1;  // Above canvas, below content
+    
+    // Light Mode Overlay
+    // White overlay with opacity in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(255, 255, 255, 0.4);  // White with opacity
+    }
+    
+    // Dark Mode Overlay
+    // Dark overlay in dark mode (swapped from light mode)
+    [data-theme="dark"] & {
+        background-color: rgba(0, 0, 0, 0.3);  // Semi-transparent black (swapped)
+    }
+}
+
+// Cellular Automaton Canvas
+// Canvas element for rendering the cellular automaton backdrop
+.cellular-automaton-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;  // Behind overlay
+    opacity: 0.3;  // Subtle visibility
+    
+    // Light Mode Canvas
+    // Less visible in light mode (swapped from dark mode)
+    html:not([data-theme="dark"]) & {
+        opacity: 0.3;  // Subtle visibility (swapped)
+    }
+    
+    // Dark Mode Canvas
+    // More visible in dark mode (swapped from light mode)
+    [data-theme="dark"] & {
+        opacity: 0.6;  // More visible for brighter effect (swapped)
+    }
+}
+
+// Automaton Controls
+// Container for the rule input in the top right corner
+.automaton-controls {
+    position: absolute;
+    top: $spacing-unit * 1.5;
+    right: $spacing-unit * 1.5;
+    display: flex;
+    align-items: center;
+    gap: $spacing-unit * 0.5;
+    z-index: 3;  // Above overlay and content
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: $spacing-unit * 0.5 $spacing-unit;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    // Light Mode Controls
+    // Lighter background with accent color border in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(97, 207, 90, 0.3);  // Accent color border
+    }
+}
+
+// Automaton Label
+// Label for the rule input
+.automaton-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    font-weight: 500;
+    
+    // Light Mode Label
+    // Dark text in light mode
+    html:not([data-theme="dark"]) & {
+        color: $text-color;
+    }
+}
+
+// Automaton Rule Input
+// Input field for entering the rule number
+.automaton-rule-input {
+    width: 60px;
+    padding: $spacing-unit * 0.375 $spacing-unit * 0.5;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.25rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.875rem;
+    font-family: $font-primary;
+    text-align: center;
+    @include transition(all, 0.2s, ease);
+    
+    &:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.4);
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        opacity: 1;
+    }
+    
+    // Light Mode Input
+    // Dark text with accent color border in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(97, 207, 90, 0.3);
+        color: $text-color;
+        
+        &:focus {
+            border-color: $accent-color;
+            background-color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+// Hero Content Container
+// Wrapper for hero text content
+.hero-content {
+    position: relative;
+    z-index: 2;                        // Above overlay and controls
+    max-width: 900px;                  // Limits content width
+    margin: 0 auto;                     // Centers horizontally
+}
+
+// Hero Profile Picture
+// Circular profile picture above hero title
+.hero-profile-picture {
+    display: block;
+    width: 120px;
+    height: 120px;
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 50%;                 // Makes it circular
+    object-fit: cover;                  // Ensures image fills circle properly
+    margin: 0 auto $spacing-unit * 2;   // Centers horizontally, adds bottom margin
+    // border: 3px solid rgba(255, 255, 255, 0.2); // Subtle border
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Adds depth
+}
+
+// Hero Title
+// Main heading in hero section
+.hero-title {
+    font-size: 3.5rem;                 // Large font size
+    font-weight: 700;                  // Bold
+    margin-bottom: $spacing-unit * 1.5;
+    color: $text-color;
+    letter-spacing: -0.03em;           // Tighter letter spacing
+    line-height: 1.1;                  // Tight line height
+    
+    @include media-query($breakpoint-md) {
+        font-size: 5rem;               // Even larger on desktop
+    }
+    
+    // Light Mode Title
+    // Dark text in light mode
+    html:not([data-theme="dark"]) & {
+        color: $primary-color;  // Black for title
+    }
+    
+    // Dark Mode Title
+    // Dark text in dark mode (swapped from light mode)
+    [data-theme="dark"] & {
+        color: $primary-color;  // Black for title (swapped)
+    }
+}
+
+// Hero Subtitle
+// Secondary text below hero title
+.hero-subtitle {
+    font-size: 1.375rem;
+    margin-bottom: $spacing-unit * 2.5;
+    color: $text-light;                // Lighter gray
+    line-height: 1.6;
+    font-weight: 400;                   // Regular weight
+    
+    // Light Mode Subtitle
+    // Dark text in light mode
+    html:not([data-theme="dark"]) & {
+        color: $text-color;  // Dark text for subtitle
+    }
+    
+    // Dark Mode Subtitle
+    // White text in dark mode
+    [data-theme="dark"] & {
+        color: rgba(255, 255, 255, 0.8);  // White text for subtitle
+    }
+}

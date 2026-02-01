@@ -1,0 +1,36 @@
+// ============================================================================
+// VARIABLES
+// ============================================================================
+// Centralized color, typography, spacing, and breakpoint definitions
+// These variables are used throughout the stylesheet for consistency
+
+// Color Palette
+// Primary colors used for buttons, links, and accents
+$primary-color: #000000;        // Main brand color (black)
+$secondary-color: #666666;      // Secondary text and UI elements
+$accent-color: #61cf5a;         // Accent color (green)
+$text-color: #1a1a1a;          // Main body text color (dark gray)
+$text-light: #666666;           // Lighter text for descriptions/secondary content
+$bg-color: #ffffff;             // Main background color (white)
+$bg-dark: #0a0a0a;              // Dark mode background (near black)
+$bg-dark-card: #1a1a1a;         // Dark mode card background (slightly lighter)
+$border-color: #e5e7eb;         // Light border color for cards/sections
+$border-dark: rgba(255, 255, 255, 0.1);  // Dark mode border color
+
+// Typography
+// Font stack with Fira Code as primary, system fonts as fallbacks
+$font-primary: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-secondary: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+// Spacing System
+// Base spacing unit used for consistent margins and padding
+$spacing-unit: 1rem;            // Base spacing (16px default)
+$container-max-width: 1440px;   // Maximum width for content containers
+
+// Responsive Breakpoints
+// Media query breakpoints for mobile-first responsive design
+$breakpoint-sm: 576px;          // Small devices (landscape phones)
+$breakpoint-md: 768px;          // Medium devices (tablets)
+$breakpoint-lg: 992px;          // Large devices (desktops)
+$breakpoint-xl: 1200px;         // Extra large devices (large desktops)
+

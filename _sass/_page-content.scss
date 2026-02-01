@@ -1,0 +1,55 @@
+// ============================================================================
+// PAGE CONTENT
+// ============================================================================
+// ============================================================================
+// PAGE CONTENT
+// ============================================================================
+// Styling for individual page content areas
+
+// Page Content Container
+// Main content area for pages
+.page-content {
+    padding: $spacing-unit * 4 0;     // Vertical padding
+}
+
+// Breadcrumb Navigation
+// Navigation breadcrumb container
+.breadcrumb-nav {
+    margin-bottom: $spacing-unit * 2;
+}
+
+// Breadcrumb List
+// Horizontal list showing page hierarchy
+.breadcrumb {
+    display: flex;
+    list-style: none;                 // Removes bullet points
+    gap: $spacing-unit * 0.5;         // Space between items
+    font-size: 0.875rem;              // Smaller text
+    
+    // Breadcrumb Item
+    .breadcrumb-item {
+        color: $text-light;
+        
+        // Breadcrumb Links
+        a {
+            color: $text-light;
+            
+            &:hover {
+                color: $primary-color;  // Darker on hover
+            }
+        }
+        
+        // Active Item (Current Page)
+        &.active {
+            color: $text-color;        // Darker for current page
+        }
+        
+        // Separator
+        // Adds "/" separator between items
+        &:not(:last-child)::after {
+            content: '/';
+            margin-left: $spacing-unit * 0.5;
+            color: $text-light;
+        }
+    }
+}

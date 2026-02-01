@@ -1,0 +1,445 @@
+// ============================================================================
+// HEADER & NAVIGATION
+// ============================================================================
+// ============================================================================
+// HEADER & NAVIGATION
+// ============================================================================
+// Site header with navigation menu and mobile menu support
+
+// Site Header
+// Main header container with glassmorphism effect (blurred background)
+.site-header {
+    background-color: rgba(17, 22, 19, 0.85);  // Semi-transparent dark green
+    backdrop-filter: blur(10px);                // Blurs content behind header
+    -webkit-backdrop-filter: blur(10px);        // Safari support
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);  // Subtle bottom border
+    @include transition(all);                    // Smooth transitions
+    
+    // Light Mode Header
+    // Pastel accent color background for light mode
+    html:not([data-theme="dark"]) & {
+        // Create pastel version of accent color (lighten and add opacity)
+        background-color: rgba(97, 207, 90, 0.15);  // Pastel green with low opacity
+        border-bottom: 1px solid rgba(97, 207, 90, 0.2);  // Subtle green border
+        
+        &.transparent {
+            background-color: rgba(97, 207, 90, 0.15);
+            border-bottom: 1px solid rgba(97, 207, 90, 0.2);
+            
+            &.scrolled {
+                background-color: rgba(97, 207, 90, 0.2);  // Slightly more opaque when scrolled
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(97, 207, 90, 0.25);
+            }
+        }
+    }
+    
+    // Transparent Header Variant
+    // Used when header should be transparent initially
+    &.transparent {
+        background-color: rgba(17, 22, 19, 0.85);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        
+        // Scrolled State
+        // Maintains same appearance when scrolled (no change needed)
+        &.scrolled {
+            background-color: rgba(17, 22, 19, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    }
+    
+    // Sticky Header
+    // Keeps header visible when scrolling
+    &.sticky {
+        position: sticky;
+        top: 0;
+        z-index: 1000;  // Above other content
+    }
+}
+
+// Navbar Container
+// Flexbox container for navigation elements
+.navbar {
+    padding: $spacing-unit * 2.5 0;  // Vertical padding
+    display: flex;                    // Flexbox layout
+    justify-content: space-between;  // Space between brand and menu
+    align-items: center;              // Vertically centers items
+    position: relative;               // For absolute positioning of children
+    
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+// Navbar Right Section
+// Container for menu items and theme toggle on the right side
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-unit * 1.5;  // Space between items
+    margin-left: auto;          // Pushes to the right
+}
+
+// Navbar Brand
+// Logo and site name container
+.navbar-brand {
+    .logo {
+        display: block;
+        height: 40px;  // Fixed logo height
+        
+        img {
+            height: 100%;  // Maintains aspect ratio
+            width: auto;
+        }
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.95);  // Near-white text
+    }
+    
+    // Light Mode Logo
+    // Black logo in light mode
+    html:not([data-theme="dark"]) & {
+        .logo {
+            img {
+                // Keep logo black (no filter)
+                filter: none;
+                @include transition(filter, 0.3s, ease);
+            }
+        }
+        
+        .logo-text {
+            color: $text-color;  // Dark text in light mode
+        }
+    }
+}
+
+// Mobile Navigation Menu
+// Slide-out menu for mobile devices
+.navbar-menu {
+    display: none;                    // Hidden by default
+    position: fixed;                  // Fixed positioning
+    top: 0;
+    right: -100%;                     // Off-screen to the right
+    width: 80%;                       // 80% of screen width
+    max-width: 300px;                 // Maximum 300px wide
+    height: 100vh;                    // Full viewport height 
+    z-index: 1001;                    // Above header
+    padding: $spacing-unit * 4 $spacing-unit * 2;
+    @include transition(right);        // Smooth slide animation
+    
+    // Active State
+    // When menu is open, slides in from right
+    &.active {
+        right: 0;  // Slides into view
+    }
+    
+    // Desktop View
+    // On tablets and up, menu is always visible and inline
+    @include media-query($breakpoint-md) {
+        position: static;              // Normal flow
+        width: auto;
+        height: auto;
+        max-width: none;
+        background-color: transparent; // No background
+        box-shadow: none;
+        padding: 0;
+        display: block;                // Always visible
+    }
+}
+
+// Mobile Menu Overlay
+// Dark overlay that appears behind mobile menu
+.mobile-overlay {
+    display: none;                    // Hidden by default
+    position: fixed;                  // Covers entire screen
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);  // Semi-transparent black
+    z-index: 1000;                    // Below menu, above content
+    opacity: 0;                       // Initially invisible
+    @include transition(opacity);      // Fade in/out
+    
+    // Active State
+    // Shows overlay when menu is open
+    &.active {
+        display: block;
+        opacity: 1;  // Fully visible
+    }
+    
+    // Desktop View
+    // No overlay needed on desktop
+    @include media-query($breakpoint-md) {
+        display: none !important;
+    }
+}
+
+// Body Menu Open State
+// Prevents scrolling when mobile menu is open
+body.menu-open {
+    overflow: hidden;  // Disables scrolling
+    
+    @include media-query($breakpoint-md) {
+        overflow: auto;  // Allows scrolling on desktop
+    }
+}
+
+// Navigation Links Container
+// Flexbox container for navigation links
+.navbar-nav {
+    display: flex;
+    list-style: none;                 // Removes bullet points
+    gap: $spacing-unit * 2.5;         // Space between links
+    align-items: center;
+    flex-direction: column;            // Stacked vertically on mobile
+ 
+    
+    @include media-query($breakpoint-md) {
+        flex-direction: row;           // Horizontal on desktop
+        gap: $spacing-unit * 3;        // More space on desktop
+    }
+}
+
+// Navigation Links
+// Individual menu link styling with animated underline
+.nav-link {
+    color: rgba(255, 255, 255, 0.9);  // Near-white text
+    font-weight: 500;
+    font-size: 0.9375rem;
+    padding: $spacing-unit * 0.5 $spacing-unit;
+    @include transition(all, 0.2s, ease);
+    position: relative;                // For pseudo-element positioning
+    
+    // Light Mode Navigation Links
+    // Dark text with accent color on hover in light mode
+    html:not([data-theme="dark"]) & {
+        color: $text-color;  // Dark text in light mode
+        
+        &:hover,
+        &.active {
+            color: $accent-color;  // Green accent color
+        }
+    }
+    
+    // Hover and Active States
+    // Changes color to green accent
+    &:hover,
+    &.active {
+        color: $accent-color;  // Green accent color
+    }
+    
+    // Animated Underline
+    // Creates animated underline effect on hover/active
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: $spacing-unit;
+        width: 0;                      // Starts at 0 width
+        height: 2px;
+        background-color: $accent-color;     // Green underline
+        @include transition(width, 0.3s, ease);
+    }
+    
+    // Expand Underline
+    // Expands underline to full width on hover/active
+    &:hover::after,
+    &.active::after {
+        width: calc(100% - #{$spacing-unit * 2});  // Full width minus padding
+    }
+}
+
+// Mobile Menu Toggle Button
+// Hamburger menu button for mobile devices
+.mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;            // Stacks hamburger lines vertically
+    gap: 4px;                          // Space between lines
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-unit * 0.5;
+    z-index: 1002;                     // Above menu
+    
+    // Desktop View
+    // Hidden on desktop (menu is always visible)
+    @include media-query($breakpoint-md) {
+        display: none;
+    }
+    
+    // Hamburger Lines
+    // Three horizontal lines that form hamburger icon
+    span {
+        width: 24px;
+        height: 2px;
+        background-color: $text-color;
+        @include transition(all);
+    }
+    
+    // Active State (X Icon)
+    // Transforms hamburger into X when menu is open
+    &.active {
+        span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);  // Top line rotates
+        }
+        span:nth-child(2) {
+            opacity: 0;  // Middle line disappears
+        }
+        span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);  // Bottom line rotates
+        }
+    }
+}
+
+// Mobile Menu Toggle - Dark Theme
+// Ensures hamburger lines are visible on dark header
+[data-theme="dark"] .mobile-menu-toggle span {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-menu-toggle span {
+    background-color: rgba(255, 255, 255, 0.9);
+    
+    // Light Mode Toggle
+    // Dark lines in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: $text-color;
+    }
+}
+
+// Theme Toggle Button
+// Button to switch between light and dark themes
+// Contains a circle element and SVG icons (sun/moon) in a flex container
+// Layout: Light mode = [circle] [sun], Dark mode = [moon] [circle]
+
+// Shared variables for toggle elements (used in both light and dark modes)
+$toggle-width: 4rem;
+$toggle-circle-size: 1.25rem;
+$toggle-icon-size: 1.25rem;
+$toggle-padding: 0.5rem;
+
+.theme-toggle {
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    @include transition(all);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: $toggle-width;
+    height: 1.5rem;
+    padding: $toggle-padding;
+    border-radius: 0.75rem;
+    position: relative;
+    z-index: 1002;                     // Above other elements
+    flex-shrink: 0;                    // Prevents shrinking
+    background-color: rgba(255, 255, 255, 0.1);  // Subtle background
+    
+    // Hover State
+    // Slightly brighter background on hover
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    @include media-query($breakpoint-md) {
+        margin-left: $spacing-unit;
+    }
+    
+    // Theme Toggle Circle
+    // Clickable circle that slides between positions
+    .theme-toggle-circle {
+        width: $toggle-circle-size;
+        height: $toggle-circle-size;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.95);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        @include transition(all, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));
+        z-index: 2;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    // Theme Toggle Icons (Sun and Moon)
+    // SVG icons for sun and moon positioned at edges
+    .theme-toggle-icon {
+        width: $toggle-icon-size;
+        height: $toggle-icon-size;
+        color: rgba(255, 255, 255, 0.9);
+        @include transition(all, 0.3s, ease);
+        flex-shrink: 0;
+        z-index: 1;
+        position: relative;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    
+    // Light Mode Toggle
+    // Dark icons in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(97, 207, 90, 0.1);  // Pastel accent background
+        
+        .theme-toggle-icon {
+            color: $text-color;
+        }
+        
+        .theme-toggle-circle {
+            background-color: $accent-color;  // Accent color circle
+        }
+    }
+    
+    // Sun Icon (shown in light mode, positioned on right)
+    .theme-toggle-sun {
+        order: 2;
+    }
+    
+    // Moon Icon (shown in dark mode, positioned on left)
+    .theme-toggle-moon {
+        order: 1;
+    }
+    
+    // Light Mode State: Circle on left, sun icon visible on right
+    &:not([data-theme="dark"]) {
+        .theme-toggle-circle {
+            left: $toggle-padding;
+        }
+        .theme-toggle-sun {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    // Dark Mode State: Moon icon visible on left, circle on right
+    &[data-theme="dark"] {
+        .theme-toggle-circle {
+            left: calc(#{$toggle-width} - #{$toggle-circle-size} - #{$toggle-padding});
+        }
+        .theme-toggle-moon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+// Dark Mode Theme Toggle Override
+// When html has data-theme="dark", update toggle button
+[data-theme="dark"] .theme-toggle {
+    .theme-toggle-circle {
+        left: calc(#{$toggle-width} - #{$toggle-circle-size} - #{$toggle-padding});
+    }
+    .theme-toggle-moon {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

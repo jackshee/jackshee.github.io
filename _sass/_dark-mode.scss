@@ -1,0 +1,123 @@
+// ============================================================================
+// DARK MODE
+// ============================================================================
+// ============================================================================
+// DARK MODE
+// ============================================================================
+// Dark theme overrides for all components
+// Activated when [data-theme="dark"] attribute is present on html/body
+
+[data-theme="dark"] {
+    // Body Dark Mode
+    // Dark background and light text
+    body {
+        background-color: $bg-dark;   // Near-black background
+        color: #e5e5e5;                // Light gray text
+    }
+    
+    // Headings Dark Mode
+    // White headings for contrast
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
+    
+    // Header Dark Mode
+    // Maintains same appearance (already dark)
+    .site-header {
+        background-color: rgba(17, 22, 19, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        
+        &.transparent.scrolled {
+            background-color: rgba(17, 22, 19, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    }
+    
+    // Logo Dark Mode
+    // Converts black text in logo to accent color using CSS filters
+    .navbar-brand {
+        .logo {
+            img {
+                // Convert black to accent color (#61cf5a)
+                // Using filter combination: brightness(0) makes it black, then
+                // sepia, saturate, hue-rotate, brightness adjust to match accent color
+                filter: brightness(0) saturate(100%) invert(67%) sepia(95%) saturate(1352%) hue-rotate(70deg) brightness(95%) contrast(81%);
+                @include transition(filter, 0.3s, ease);
+            }
+        }
+    }
+    
+    // Hero Section Dark Mode
+    // White text for visibility on black background
+    .hero-section {
+        color: #ffffff;
+        
+        .hero-title {
+            color: #ffffff;  // White text
+        }
+        
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.8);  // White text with transparency
+        }
+    }
+    
+    // Cards Dark Mode
+    // Dark card background with adjusted glass effect
+    .card {
+        background-color: $bg-dark-card;  // Dark gray background
+        border-color: $border-dark;        // Subtle white border
+        
+        &::before {
+            background: rgba(255, 255, 255, 0);  // Transparent initially
+        }
+        
+        // Hover State Dark Mode
+        &:hover {
+            border-color: rgba(255, 255, 255, 0.2);  // Lighter border
+            
+            &::before {
+                background: rgba(255, 255, 255, 0.1);  // Subtle white overlay
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-color: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                           0 0 0 1px rgba(255, 255, 255, 0.1) inset;  // Darker shadow
+            }
+        }
+    }
+    
+    // Theme Toggle Dark Mode
+    // The toggle button styling is handled by the data-theme attribute
+    // No additional overrides needed as the toggle adapts automatically
+    
+    // Navigation Links Dark Mode
+    // Light text for visibility
+    .nav-link {
+        color: #e5e5e5;
+        
+        &:hover,
+        &.active {
+            color: #ffffff;
+        }
+    }
+    
+    // Breadcrumb Dark Mode
+    // Light text for visibility
+    .breadcrumb-item {
+        color: rgba(255, 255, 255, 0.7);
+        
+        &.active {
+            color: #ffffff;
+        }
+    }
+    
+    // Text Light Utility Dark Mode
+    // Adjusted for dark backgrounds
+    .text-light {
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+}

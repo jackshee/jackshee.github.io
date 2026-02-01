@@ -1,0 +1,134 @@
+// ============================================================================
+// EXPERIENCE SECTION
+// ============================================================================
+// ============================================================================
+// EXPERIENCE SECTION
+// ============================================================================
+// Experience list styling with visible bullet points
+
+// Experience List Container
+// Container for all experience items
+.experience-list {
+    margin-top: $spacing-unit * 2;
+    
+    // Experience Item
+    // Individual experience entry
+    .experience-item {
+        margin-bottom: $spacing-unit * 3;
+        padding-bottom: $spacing-unit * 3;
+        border-bottom: 1px solid $border-color;
+        
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        // Dark Mode Border
+        [data-theme="dark"] & {
+            border-bottom-color: $border-dark;
+        }
+    }
+    
+    // Experience Header
+    // Contains icon, title, and company info
+    .experience-header {
+        display: flex;
+        align-items: flex-start;
+        gap: $spacing-unit * 1.5;
+        margin-bottom: $spacing-unit;
+    }
+    
+    // Experience Icon Wrapper
+    // Container for the experience icon
+    .experience-icon-wrapper {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        background-color: rgba(97, 207, 90, 0.1);
+        border-radius: 0.5rem;
+    }
+    
+    // Experience Icon
+    // Icon styling with accent color
+    .experience-icon {
+        color: $accent-color;
+        font-size: 1.5rem;
+    }
+    
+    // Experience Title Wrapper
+    // Container for title and company
+    .experience-title-wrapper {
+        flex: 1;
+    }
+    
+    // Experience Title
+    // Job title heading
+    .experience-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 $spacing-unit * 0.25 0;
+        color: $text-color;
+        
+        // Dark Mode Title
+        [data-theme="dark"] & {
+            color: #ffffff;
+        }
+    }
+    
+    // Experience Company
+    // Company name and period
+    .experience-company {
+        color: $text-light;
+        font-size: 0.9375rem;
+        margin: 0;
+        
+        // Dark Mode Company
+        [data-theme="dark"] & {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+    
+    // Experience Responsibilities List
+    // List of job responsibilities with visible bullets
+    .experience-responsibilities {
+        list-style: disc !important;              // Show disc bullets (override global reset)
+        list-style-type: disc !important;         // Explicitly set disc type
+        list-style-position: outside;             // Bullets outside content
+        padding-left: $spacing-unit * 2;          // Indentation for bullets
+        margin: $spacing-unit 0 0 0;
+        
+        // Dark Mode List
+        [data-theme="dark"] & {
+            color: #e5e5e5;  // Set color on list to affect bullets
+        }
+        
+        // Experience Responsibility Item
+        // Individual responsibility with bullet
+        li {
+            list-style: inherit !important;       // Inherit disc from parent (override global reset)
+            list-style-type: inherit !important; // Inherit disc type
+            margin-bottom: $spacing-unit * 0.5;
+            padding-left: $spacing-unit * 0.5;
+            color: $text-color;
+            line-height: 1.6;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+            
+            // Dark Mode List Item
+            [data-theme="dark"] & {
+                color: #e5e5e5;
+            }
+            
+            // Dark Mode Bullet Point (using ::marker)
+            [data-theme="dark"] &::marker {
+                color: #e5e5e5;
+            }
+        }
+    }
+}

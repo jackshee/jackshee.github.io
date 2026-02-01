@@ -1,0 +1,146 @@
+// ============================================================================
+// BLOG
+// ============================================================================
+// ============================================================================
+// BLOG
+// ============================================================================
+// Blog listing and post page styling
+
+// Post List Container
+// Container for blog post listings
+.post-list {
+    // Individual Post Item
+    // Each blog post in the list
+    .post-item {
+        margin-bottom: $spacing-unit * 3;
+        padding-bottom: $spacing-unit * 3;
+        border-bottom: 1px solid $border-color;  // Separator line
+        
+        // Remove border from last item
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    
+    // Post Title
+    // Blog post heading in list
+    .post-title {
+        font-size: 2rem;
+        margin-bottom: $spacing-unit * 0.5;
+        
+        // Post Title Link
+        a {
+            color: $text-color;
+            
+            &:hover {
+                color: $primary-color;  // Black on hover
+            }
+        }
+    }
+    
+    // Post Metadata
+    // Date, author, category info
+    .post-meta {
+        display: flex;
+        gap: $spacing-unit * 1.5;     // Space between meta items
+        font-size: 0.875rem;           // Smaller text
+        color: $text-light;            // Gray text
+        margin-bottom: $spacing-unit;
+        
+        // Meta Item
+        span {
+            display: flex;
+            align-items: center;
+            gap: $spacing-unit * 0.25;  // Space between icon and text
+        }
+    }
+    
+    // Post Excerpt
+    // Preview text from blog post
+    .post-excerpt {
+        color: $text-light;
+    }
+}
+
+// ============================================================================
+// POST PAGE
+// ============================================================================
+// Individual blog post page styling
+
+// Post Page Container
+// Main container for single post pages
+.post-page {
+    // Post Header
+    // Title and metadata section
+    .post-header {
+        margin-bottom: $spacing-unit * 3;
+    }
+    
+    // Post Title
+    // Main heading on post page
+    .post-title {
+        font-size: 3rem;               // Large title
+        margin-bottom: $spacing-unit;
+    }
+    
+    // Post Body Content
+    // Main article content
+    .post-body {
+        font-size: 1.125rem;           // Larger body text
+        line-height: 1.8;               // Comfortable line height
+        
+        // Headings in Post Body
+        h2, h3, h4 {
+            margin-top: $spacing-unit * 2;  // Space above headings
+            margin-bottom: $spacing-unit;
+        }
+        
+        // Images in Post Body
+        img {
+            max-width: 100%;           // Responsive images
+            height: auto;               // Maintains aspect ratio
+            border-radius: 0.5rem;     // Rounded corners
+            margin: $spacing-unit * 2 0;  // Vertical margin
+        }
+    }
+    
+    // Post Tags
+    // Tag list for categorizing posts
+    .post-tags {
+        display: flex;
+        flex-wrap: wrap;               // Wraps to new line if needed
+        gap: $spacing-unit * 0.5;      // Space between tags
+        margin-bottom: $spacing-unit * 2;
+        
+        // Individual Tag
+        .tag {
+            padding: $spacing-unit * 0.25 $spacing-unit * 0.75;
+            background-color: rgba($primary-color, 0.1);  // Light black background
+            color: $primary-color;     // Black text
+            border-radius: 0.25rem;     // Slightly rounded
+            font-size: 0.875rem;       // Smaller text
+        }
+    }
+    
+    // Post Navigation
+    // Previous/Next post links
+    .post-navigation {
+        display: flex;
+        justify-content: space-between;  // Previous on left, Next on right
+        margin-top: $spacing-unit * 4;
+        padding-top: $spacing-unit * 2;
+        border-top: 1px solid $border-color;  // Top separator
+        
+        // Navigation Links
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: $spacing-unit * 0.5;  // Space between icon and text
+            color: $text-color;
+            
+            &:hover {
+                color: $primary-color;  // Black on hover
+            }
+        }
+    }
+}

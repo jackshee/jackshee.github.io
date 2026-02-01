@@ -1,0 +1,197 @@
+// ============================================================================
+// CARDS
+// ============================================================================
+// ============================================================================
+// CARDS
+// ============================================================================
+// Card components with glassmorphism hover effects
+
+// Card Grid Container
+// Responsive grid layout for cards
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;        // Single column on mobile
+    gap: $spacing-unit * 2;            // Space between cards
+    
+    @include media-query($breakpoint-md) {
+        grid-template-columns: repeat(2, 1fr);  // Two columns on tablets
+    }
+    
+    @include media-query($breakpoint-lg) {
+        grid-template-columns: repeat(3, 1fr);  // Three columns on desktop
+    }
+}
+
+// Skills Card Grid Wrapper
+// 2-column, 2-row layout for skills section on large screens
+.skills-card-grid-wrapper .card-grid {
+    grid-template-columns: 1fr;        // Single column on mobile
+    
+    @include media-query($breakpoint-md) {
+        grid-template-columns: repeat(2, 1fr);  // Two columns on tablets and up
+    }
+}
+// Card Component
+// Individual card with glassmorphism hover effect
+.card {
+    background-color: $bg-color;      // White background
+    border: 1px solid $border-color;   // Light border
+    border-radius: 0.75rem;            // Rounded corners
+    padding: $spacing-unit * 2.5;     // Internal padding
+    @include transition(all, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));  // Smooth transitions
+    position: relative;                // For pseudo-element positioning
+    overflow: hidden;                  // Clips content
+    backdrop-filter: blur(0px);       // No blur initially
+    
+    // Glass Pane Effect (Pseudo-element)
+    // Creates glassmorphism effect on hover using ::before
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0);  // Transparent initially
+        backdrop-filter: blur(0px);          // No blur initially
+        -webkit-backdrop-filter: blur(0px);
+        border-radius: 0.75rem;
+        opacity: 0;                    // Invisible initially
+        @include transition(all, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));
+        z-index: 0;                   // Behind card content
+        border: 1px solid transparent;
+    }
+    
+    // Hover State
+    // Lifts card and applies glassmorphism effect
+    &:hover {
+        transform: translateY(-8px);   // Lifts card up
+        border-color: rgba(0, 0, 0, 0.1);
+        
+        // Activate Glass Effect
+        &::before {
+            opacity: 1;                               // Fully visible
+            background: rgba(255, 255, 255, 0.7);     // Semi-transparent white
+            backdrop-filter: blur(20px);               // Strong blur
+            -webkit-backdrop-filter: blur(20px);
+            border-color: rgba(255, 255, 255, 0.3);   // Light border
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 
+                       0 0 0 1px rgba(255, 255, 255, 0.5) inset;  // Shadow and inset border
+        }
+    }
+    
+    // Card Content
+    // Ensures all card content appears above glass effect
+    > * {
+        position: relative;
+        z-index: 1;                   // Above ::before pseudo-element
+    }
+    
+    // Card Icon
+    // Large icon at top of card
+    .card-icon {
+        font-size: 2.5rem;
+        color: $accent-color;
+        margin-bottom: $spacing-unit;
+    }
+    
+    // Card Title
+    // Heading within card
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: $spacing-unit * 0.75;
+        font-weight: 600;
+    }
+    
+    // Card Description
+    // Body text within card
+    .card-description {
+        color: $text-light;
+        line-height: 1.6;
+    }
+    
+    // Card Images
+    // Images within cards
+    img {
+        border-radius: 0.5rem;        // Rounded corners
+        margin-bottom: $spacing-unit * 1.5;
+        width: 100%;                   // Full width
+        height: auto;                  // Maintains aspect ratio
+    }
+}
+
+// Project Filter Buttons
+// Filter buttons for filtering projects by year
+.project-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-unit * 0.5;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $spacing-unit * 2;
+}
+
+.filter-btn {
+    padding: $spacing-unit * 0.5 $spacing-unit;
+    background-color: rgba(97, 207, 90, 0.1);
+    color: $accent-color;
+    border: 1px solid rgba(97, 207, 90, 0.3);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    @include transition(all, 0.3s, ease);
+    
+    // Hover State
+    &:hover {
+        background-color: rgba(97, 207, 90, 0.2);
+        border-color: rgba(97, 207, 90, 0.5);
+        transform: translateY(-2px);
+    }
+    
+    // Active State
+    &.active {
+        background-color: $accent-color;
+        color: white;
+        border-color: $accent-color;
+        box-shadow: 0 2px 8px rgba(97, 207, 90, 0.3);
+    }
+    
+    // Dark Mode Support
+    [data-theme="dark"] & {
+        background-color: rgba(97, 207, 90, 0.15);
+        color: $accent-color;
+        border-color: rgba(97, 207, 90, 0.4);
+        
+        &:hover {
+            background-color: rgba(97, 207, 90, 0.25);
+            border-color: rgba(97, 207, 90, 0.6);
+        }
+        
+        &.active {
+            background-color: $accent-color;
+            color: white;
+            border-color: $accent-color;
+        }
+    }
+}
+
+// Project Card Filtering
+// Styles for project cards when filtering
+.project-card {
+    @include transition(opacity, 0.3s, ease);
+    text-decoration: none;  // Remove default link styling
+    color: inherit;         // Inherit text color
+    display: block;         // Make link behave like block element
+    
+    // Hidden state (for filtered out cards)
+    &[style*="display: none"] {
+        display: none !important;
+    }
+}
+
+// Hover state for project cards - override card hover border color
+// Using more specific selector to ensure it overrides .card:hover
+.card.project-card:hover {
+    border-color: $accent-color !important;
+}

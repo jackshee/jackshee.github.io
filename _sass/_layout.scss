@@ -1,0 +1,18 @@
+// ============================================================================
+// LAYOUT - CONTAINER
+// ============================================================================
+// Main content container with responsive padding
+
+// Container Class
+// Centers content with max-width and responsive horizontal padding
+// Used to wrap main content sections
+.container {
+    max-width: $container-max-width;  // Limits width to 1440px
+    margin: 0 auto;                    // Centers container horizontally
+    padding: 0 $spacing-unit * 1.5;   // 1.5rem padding on mobile
+    
+    @include media-query($breakpoint-md) {
+        padding: 0 $spacing-unit * 2;  // 2rem padding on tablets and up
+    }
+}
+
