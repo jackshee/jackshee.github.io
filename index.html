@@ -2,7 +2,7 @@
 layout: home
 ---
 
-<section class="hero-section" style="background-image: url('/assets/images/hero-bg.jpg');">
+<section class="hero-section" style="background-image: url('{{ '/assets/images/hero-bg.jpg' | relative_url }}');">
     <canvas id="cellular-automaton-canvas" class="cellular-automaton-canvas"></canvas>
     <div class="hero-overlay">
         <div class="automaton-controls">
@@ -12,7 +12,7 @@ layout: home
     </div>
     <div class="container">
         <div class="hero-content" style="text-align: center;">
-            <img src="/assets/images/avatar.jpg" alt="Profile Picture" class="hero-profile-picture">
+            <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Profile Picture" class="hero-profile-picture">
             <h1 class="hero-title">Jack Shee</h1>
             <p class="hero-subtitle">Full-Stack Developer / Data Scientist / Research Software Engineer</p>
             <a href="#projects" class="btn btn-primary btn-hero">
@@ -74,7 +74,7 @@ layout: home
             {% for project in site.data.projects limit: 6 %}
             <div class="card">
                 {% if project.image %}
-                <img src="{{ project.image }}" alt="{{ project.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <img src="{{ project.image | relative_url }}" alt="{{ project.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1rem;">
                 {% endif %}
                 <h3 class="card-title">{{ project.title }}</h3>
                 <p class="card-description">{{ project.description }}</p>
