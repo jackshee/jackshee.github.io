@@ -731,9 +731,9 @@ $toggle-padding: 0.5rem;
     padding: $spacing-unit * 6 0;      // Vertical padding
     
     // Light Mode Hero Background
-    // Dark background in light mode (swapped from dark mode)
+    // White background in light mode
     html:not([data-theme="dark"]) & {
-        background-color: $bg-dark;  // Dark background (swapped)
+        background-color: $bg-color;  // White background
     }
     
     // Dark Mode Hero Background
@@ -760,9 +760,9 @@ $toggle-padding: 0.5rem;
     z-index: 1;  // Above canvas, below content
     
     // Light Mode Overlay
-    // White overlay in light mode (swapped from dark mode)
+    // White overlay with opacity in light mode
     html:not([data-theme="dark"]) & {
-        background-color: rgba(255, 255, 255, 0.4);  // Brighter, less opaque white (swapped)
+        background-color: rgba(255, 255, 255, 0.4);  // White with opacity
     }
     
     // Dark Mode Overlay
@@ -913,9 +913,9 @@ $toggle-padding: 0.5rem;
     }
     
     // Light Mode Title
-    // White text in light mode (swapped from dark mode)
+    // Dark text in light mode
     html:not([data-theme="dark"]) & {
-        color: #ffffff;  // White for title (swapped)
+        color: $primary-color;  // Black for title
     }
     
     // Dark Mode Title
@@ -935,15 +935,15 @@ $toggle-padding: 0.5rem;
     font-weight: 400;                   // Regular weight
     
     // Light Mode Subtitle
-    // White text in light mode (swapped from dark mode)
+    // Dark text in light mode
     html:not([data-theme="dark"]) & {
-        color: rgba(255, 255, 255, 0.8);  // White text for subtitle (swapped)
+        color: $text-color;  // Dark text for subtitle
     }
     
     // Dark Mode Subtitle
-    // Dark text in dark mode (swapped from light mode)
+    // White text in dark mode
     [data-theme="dark"] & {
-        color: $text-color;  // Dark text for subtitle (swapped)
+        color: rgba(255, 255, 255, 0.8);  // White text for subtitle
     }
 }
 

@@ -206,11 +206,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const width = Math.floor(canvas.width / cellSize);
             const height = Math.min(grid.length, maxGenerations);
             
-            // Determine cell color based on theme (swapped again)
+            // Determine cell color based on theme
             const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
             const cellColor = isDarkMode 
-                ? 'rgba(97, 207, 90, 0.6)'  // Accent color for dark mode (swapped)
-                : 'rgba(255, 255, 255, 0.8)';  // White for light mode (swapped)
+                ? 'rgba(97, 207, 90, 0.6)'  // Accent color for dark mode
+                : 'rgba(75, 165, 70, 0.9)';  // Slightly darker accent color for light mode
             
             // Draw each generation
             for (let gen = 0; gen < height; gen++) {

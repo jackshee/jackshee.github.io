@@ -1,7 +1,7 @@
 {% if include.title or include.subtitle or include.image %}
 <section class="hero-section" style="{% if include.image %}background-image: url('{{ include.image }}');{% endif %}">
     <canvas id="cellular-automaton-canvas" class="cellular-automaton-canvas"></canvas>
-    <div class="hero-overlay" style="background-color: {{ include.overlay_color | default: 'rgba(0,0,0,0.5)' }};">
+    <div class="hero-overlay">
         <div class="automaton-controls">
             <label for="automaton-rule-input" class="automaton-label">Rule:</label>
             <input type="number" id="automaton-rule-input" class="automaton-rule-input" min="0" max="255" value="73" />
