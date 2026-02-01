@@ -4,7 +4,7 @@ title: "About Me"
 description: "Learn more about my background, skills, and experience"
 hero:
   title: "Hello"
-  subtitle: "Hope you like the cellular automaton background :)"
+  subtitle: "Hope you enjoy the cellular automaton background :)"
   alignment: center
 ---
 

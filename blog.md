@@ -4,7 +4,7 @@ title: "Blog"
 description: "Thoughts, tutorials, and updates"
 hero:
   title: "Blog"
-  subtitle: "Latest posts and articles"
+  subtitle: "Here you may find some articles or tutorials I have written (mostly for myself)"
   alignment: center
 ---
 

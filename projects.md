@@ -4,7 +4,7 @@ title: "Projects"
 description: "A showcase of my recent work and side projects"
 hero:
   title: "My Projects"
-  subtitle: "Explore my portfolio of work"
+  subtitle: "The pattern you see now is called the Sierpinski triangle :)"
   alignment: center
 ---
 

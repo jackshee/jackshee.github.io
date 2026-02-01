@@ -190,7 +190,7 @@
 // Hero Title
 // Main heading in hero section
 .hero-title {
-    font-size: 3.5rem;                 // Large font size
+    font-size: 2rem;                 // Large font size
     font-weight: 700;                  // Bold
     margin-bottom: $spacing-unit * 1.5;
     color: $text-color;
@@ -198,7 +198,7 @@
     line-height: 1.1;                  // Tight line height
     
     @include media-query($breakpoint-md) {
-        font-size: 5rem;               // Even larger on desktop
+        font-size: 3.5rem;               // Even larger on desktop
     }
     
     // Light Mode Title
@@ -233,5 +233,44 @@
     // White text in dark mode
     [data-theme="dark"] & {
         color: rgba(255, 255, 255, 0.8);  // White text for subtitle
+    }
+}
+
+// Hero Social Icons
+// Container for social media icons (GitHub, LinkedIn)
+.hero-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: $spacing-unit * 2;
+    
+    a {
+        color: inherit;
+        text-decoration: none;
+        @include transition(transform, 0.2s, ease);
+        
+        &:hover {
+            transform: scale(1.1);
+        }
+        
+        i {
+            font-size: 2rem;
+        }
+    }
+    
+    // Light Mode Social Icons
+    // Dark icons in light mode
+    html:not([data-theme="dark"]) & {
+        a {
+            color: $text-color;
+        }
+    }
+    
+    // Dark Mode Social Icons
+    // Light icons in dark mode
+    [data-theme="dark"] & {
+        a {
+            color: rgba(255, 255, 255, 0.8);
+        }
     }
 }
