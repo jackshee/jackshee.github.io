@@ -206,6 +206,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const width = Math.floor(canvas.width / cellSize);
             const height = Math.min(grid.length, maxGenerations);
             
+            // Determine cell color based on theme (swapped again)
+            const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+            const cellColor = isDarkMode 
+                ? 'rgba(97, 207, 90, 0.6)'  // Accent color for dark mode (swapped)
+                : 'rgba(255, 255, 255, 0.8)';  // White for light mode (swapped)
+            
             // Draw each generation
             for (let gen = 0; gen < height; gen++) {
                 const row = grid[gen];
@@ -213,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 for (let x = 0; x < width && x < row.length; x++) {
                     if (row[x] === 1) {
-                        ctx.fillStyle = 'rgba(97, 207, 90, 0.6)'; // Accent color with transparency
+                        ctx.fillStyle = cellColor;
                         ctx.fillRect(x * cellSize, gen * cellSize, cellSize, cellSize);
                     }
                 }
@@ -257,11 +263,26 @@ document.addEventListener('DOMContentLoaded', function() {
         resizeCanvas();
         animate();
         
+        // Listen for theme changes and redraw
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                    drawGrid();  // Redraw with new theme colors
+                }
+            });
+        });
+        
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+        
         // Cleanup on page unload
         window.addEventListener('beforeunload', function() {
             if (animationId) {
                 cancelAnimationFrame(animationId);
             }
+            observer.disconnect();
         });
     });
 });

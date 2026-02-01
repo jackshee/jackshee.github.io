@@ -249,6 +249,23 @@ a {
             border-radius: 50%;               // Perfect circle
             flex-shrink: 0;                   // Prevents shrinking
         }
+        
+        // Light Mode Hero Button
+        // Same pastel accent background as navbar in light mode
+        html:not([data-theme="dark"]) & {
+            background: rgba(97, 207, 90, 0.15) !important;  // Same pastel accent as navbar
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(97, 207, 90, 0.2) !important;  // Accent color border
+            color: $text-color !important;  // Dark text
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);  // Subtle shadow
+            
+            &:hover {
+                background: rgba(97, 207, 90, 0.2) !important;  // Slightly more opaque on hover
+                border-color: rgba(97, 207, 90, 0.25) !important;  // Slightly brighter border
+                box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);  // Enhanced shadow
+            }
+        }
     }
 }
 
@@ -265,6 +282,26 @@ a {
     -webkit-backdrop-filter: blur(10px);        // Safari support
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);  // Subtle bottom border
     @include transition(all);                    // Smooth transitions
+    
+    // Light Mode Header
+    // Pastel accent color background for light mode
+    html:not([data-theme="dark"]) & {
+        // Create pastel version of accent color (lighten and add opacity)
+        background-color: rgba(97, 207, 90, 0.15);  // Pastel green with low opacity
+        border-bottom: 1px solid rgba(97, 207, 90, 0.2);  // Subtle green border
+        
+        &.transparent {
+            background-color: rgba(97, 207, 90, 0.15);
+            border-bottom: 1px solid rgba(97, 207, 90, 0.2);
+            
+            &.scrolled {
+                background-color: rgba(97, 207, 90, 0.2);  // Slightly more opaque when scrolled
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(97, 207, 90, 0.25);
+            }
+        }
+    }
     
     // Transparent Header Variant
     // Used when header should be transparent initially
@@ -334,6 +371,22 @@ a {
         font-size: 1.5rem;
         font-weight: 700;
         color: rgba(255, 255, 255, 0.95);  // Near-white text
+    }
+    
+    // Light Mode Logo
+    // Black logo in light mode
+    html:not([data-theme="dark"]) & {
+        .logo {
+            img {
+                // Keep logo black (no filter)
+                filter: none;
+                @include transition(filter, 0.3s, ease);
+            }
+        }
+        
+        .logo-text {
+            color: $text-color;  // Dark text in light mode
+        }
     }
 }
 
@@ -435,6 +488,17 @@ body.menu-open {
     @include transition(all, 0.2s, ease);
     position: relative;                // For pseudo-element positioning
     
+    // Light Mode Navigation Links
+    // Dark text with accent color on hover in light mode
+    html:not([data-theme="dark"]) & {
+        color: $text-color;  // Dark text in light mode
+        
+        &:hover,
+        &.active {
+            color: $accent-color;  // Green accent color
+        }
+    }
+    
     // Hover and Active States
     // Changes color to green accent
     &:hover,
@@ -513,6 +577,12 @@ body.menu-open {
 
 .mobile-menu-toggle span {
     background-color: rgba(255, 255, 255, 0.9);
+    
+    // Light Mode Toggle
+    // Dark lines in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: $text-color;
+    }
 }
 
 // Theme Toggle Button
@@ -583,6 +653,20 @@ $toggle-padding: 0.5rem;
         transform: scale(0.8);
     }
     
+    // Light Mode Toggle
+    // Dark icons in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(97, 207, 90, 0.1);  // Pastel accent background
+        
+        .theme-toggle-icon {
+            color: $text-color;
+        }
+        
+        .theme-toggle-circle {
+            background-color: $accent-color;  // Accent color circle
+        }
+    }
+    
     // Sun Icon (shown in light mode, positioned on right)
     .theme-toggle-sun {
         order: 2;
@@ -646,6 +730,18 @@ $toggle-padding: 0.5rem;
     color: $text-color;
     padding: $spacing-unit * 6 0;      // Vertical padding
     
+    // Light Mode Hero Background
+    // Dark background in light mode (swapped from dark mode)
+    html:not([data-theme="dark"]) & {
+        background-color: $bg-dark;  // Dark background (swapped)
+    }
+    
+    // Dark Mode Hero Background
+    // Black background in dark mode
+    [data-theme="dark"] & {
+        background-color: $bg-dark;  // Black background
+    }
+    
     @include media-query($breakpoint-md) {
         min-height: 80vh;              // 80% height on larger screens
         padding: $spacing-unit * 8 0;  // More padding on desktop
@@ -662,6 +758,18 @@ $toggle-padding: 0.5rem;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3);  // Semi-transparent black
     z-index: 1;  // Above canvas, below content
+    
+    // Light Mode Overlay
+    // White overlay in light mode (swapped from dark mode)
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(255, 255, 255, 0.4);  // Brighter, less opaque white (swapped)
+    }
+    
+    // Dark Mode Overlay
+    // Dark overlay in dark mode (swapped from light mode)
+    [data-theme="dark"] & {
+        background-color: rgba(0, 0, 0, 0.3);  // Semi-transparent black (swapped)
+    }
 }
 
 // Cellular Automaton Canvas
@@ -674,6 +782,18 @@ $toggle-padding: 0.5rem;
     height: 100%;
     z-index: 0;  // Behind overlay
     opacity: 0.3;  // Subtle visibility
+    
+    // Light Mode Canvas
+    // Less visible in light mode (swapped from dark mode)
+    html:not([data-theme="dark"]) & {
+        opacity: 0.3;  // Subtle visibility (swapped)
+    }
+    
+    // Dark Mode Canvas
+    // More visible in dark mode (swapped from light mode)
+    [data-theme="dark"] & {
+        opacity: 0.6;  // More visible for brighter effect (swapped)
+    }
 }
 
 // Automaton Controls
@@ -692,6 +812,13 @@ $toggle-padding: 0.5rem;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    // Light Mode Controls
+    // Lighter background with accent color border in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(97, 207, 90, 0.3);  // Accent color border
+    }
 }
 
 // Automaton Label
@@ -700,6 +827,12 @@ $toggle-padding: 0.5rem;
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.875rem;
     font-weight: 500;
+    
+    // Light Mode Label
+    // Dark text in light mode
+    html:not([data-theme="dark"]) & {
+        color: $text-color;
+    }
 }
 
 // Automaton Rule Input
@@ -725,6 +858,19 @@ $toggle-padding: 0.5rem;
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
         opacity: 1;
+    }
+    
+    // Light Mode Input
+    // Dark text with accent color border in light mode
+    html:not([data-theme="dark"]) & {
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(97, 207, 90, 0.3);
+        color: $text-color;
+        
+        &:focus {
+            border-color: $accent-color;
+            background-color: rgba(255, 255, 255, 1);
+        }
     }
 }
 
@@ -765,6 +911,18 @@ $toggle-padding: 0.5rem;
     @include media-query($breakpoint-md) {
         font-size: 5rem;               // Even larger on desktop
     }
+    
+    // Light Mode Title
+    // White text in light mode (swapped from dark mode)
+    html:not([data-theme="dark"]) & {
+        color: #ffffff;  // White for title (swapped)
+    }
+    
+    // Dark Mode Title
+    // Dark text in dark mode (swapped from light mode)
+    [data-theme="dark"] & {
+        color: $primary-color;  // Black for title (swapped)
+    }
 }
 
 // Hero Subtitle
@@ -775,6 +933,18 @@ $toggle-padding: 0.5rem;
     color: $text-light;                // Lighter gray
     line-height: 1.6;
     font-weight: 400;                   // Regular weight
+    
+    // Light Mode Subtitle
+    // White text in light mode (swapped from dark mode)
+    html:not([data-theme="dark"]) & {
+        color: rgba(255, 255, 255, 0.8);  // White text for subtitle (swapped)
+    }
+    
+    // Dark Mode Subtitle
+    // Dark text in dark mode (swapped from light mode)
+    [data-theme="dark"] & {
+        color: $text-color;  // Dark text for subtitle (swapped)
+    }
 }
 
 // ============================================================================
@@ -1290,16 +1460,16 @@ $toggle-padding: 0.5rem;
     }
     
     // Hero Section Dark Mode
-    // White text for visibility on dark background
+    // White text for visibility on black background
     .hero-section {
         color: #ffffff;
         
         .hero-title {
-            color: #ffffff;
+            color: #ffffff;  // White text
         }
         
         .hero-subtitle {
-            color: rgba(255, 255, 255, 0.8);  // Slightly transparent white
+            color: rgba(255, 255, 255, 0.8);  // White text with transparency
         }
     }
     
