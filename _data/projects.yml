@@ -1,14 +1,14 @@
-- title: "E-Commerce Platform"
-  description: "A full-featured e-commerce platform built with React and Node.js, featuring real-time inventory management, secure payments, and admin dashboard."
-  technologies: ["React", "Node.js", "MongoDB", "Stripe"]
-  url: "https://github.com/jackshee/ecommerce-platform"
+- title: "Real Estate Industry Project"
+  description: "Data engineering pipeline and analysis of the Victorian rental market in 2025, featuring comprehensive market insights and data processing workflows."
+  technologies: ["Python", "Jupyter Notebook", "Shell"]
+  url: "https://github.com/jackshee/real-estate-industry-project-public-version"
 
-- title: "Task Management App"
-  description: "A collaborative task management application with real-time updates, team collaboration features, and project tracking capabilities."
-  technologies: ["Vue.js", "Firebase", "Tailwind CSS"]
-  url: "https://github.com/jackshee/task-manager"
+- title: "NYC Congestion Pricing Policy Analysis"
+  description: "ETL data engineering pipeline and analysis of the impact of the 2025 Congestion Pricing Policy on the For-Hire Vehicle and Yellow Taxi Industry in New York City using Differences-in-Differences methodology."
+  technologies: ["Python", "Jupyter Notebook", "PySpark", "GeoPandas", "StatsModels"]
+  url: "https://github.com/jackshee/congestion-pricing-policy-analysis-public-version"
 
-- title: "Weather Dashboard"
+- title: "CISSA Catalyst Hackathon 2025"
   description: "A beautiful weather dashboard that displays current conditions, forecasts, and weather maps with location-based services."
   technologies: ["JavaScript", "OpenWeather API", "Chart.js"]
   url: "https://github.com/jackshee/weather-dashboard"
