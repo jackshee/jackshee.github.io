@@ -706,6 +706,21 @@ $toggle-padding: 0.5rem;
     margin: 0 auto;                     // Centers horizontally
 }
 
+// Hero Profile Picture
+// Circular profile picture above hero title
+.hero-profile-picture {
+    display: block;
+    width: 120px;
+    height: 120px;
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 50%;                 // Makes it circular
+    object-fit: cover;                  // Ensures image fills circle properly
+    margin: 0 auto $spacing-unit * 2;   // Centers horizontally, adds bottom margin
+    // border: 3px solid rgba(255, 255, 255, 0.2); // Subtle border
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Adds depth
+}
+
 // Hero Title
 // Main heading in hero section
 .hero-title {
