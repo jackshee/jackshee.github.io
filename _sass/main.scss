@@ -1229,6 +1229,20 @@ $toggle-padding: 0.5rem;
         }
     }
     
+    // Logo Dark Mode
+    // Converts black text in logo to accent color using CSS filters
+    .navbar-brand {
+        .logo {
+            img {
+                // Convert black to accent color (#61cf5a)
+                // Using filter combination: brightness(0) makes it black, then
+                // sepia, saturate, hue-rotate, brightness adjust to match accent color
+                filter: brightness(0) saturate(100%) invert(67%) sepia(95%) saturate(1352%) hue-rotate(70deg) brightness(95%) contrast(81%);
+                @include transition(filter, 0.3s, ease);
+            }
+        }
+    }
+    
     // Hero Section Dark Mode
     // White text for visibility on dark background
     .hero-section {
