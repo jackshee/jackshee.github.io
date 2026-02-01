@@ -1,0 +1,29 @@
+- title: "Senior Full-Stack Developer"
+  company: "Tech Company Inc."
+  period: "2021 - Present"
+  icon: "fas fa-laptop-code"
+  responsibilities:
+    - "Led development of multiple client projects from conception to deployment"
+    - "Collaborated with cross-functional teams to deliver high-quality products"
+    - "Mentored junior developers and conducted code reviews"
+    - "Improved application performance by 40% through optimization"
+
+- title: "Full-Stack Developer"
+  company: "Startup Co."
+  period: "2019 - 2021"
+  icon: "fas fa-code"
+  responsibilities:
+    - "Developed and maintained web applications using React and Node.js"
+    - "Implemented responsive designs and ensured cross-browser compatibility"
+    - "Worked closely with designers to bring mockups to life"
+    - "Participated in agile development processes"
+
+- title: "Junior Developer"
+  company: "Agency Ltd."
+  period: "2018 - 2019"
+  icon: "fas fa-terminal"
+  responsibilities:
+    - "Built and maintained client websites using various CMS platforms"
+    - "Assisted in the development of custom web applications"
+    - "Learned best practices and modern development workflows"
+

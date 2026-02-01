@@ -1,0 +1,36 @@
+- degree: "Graduate Diploma of Mathematics"
+  institution: "University of Melbourne"
+  period: "2023 - 2025"
+  status: "Completed"
+  icon: "fas fa-graduation-cap"
+  details:
+    - "Majored in Pure Mathematics before switching to Statistics and Stochastic Processes Specialisation"
+    - "Deferred in 2024 to do PhD"
+
+- degree: "Doctorate in Philosophy (Industry PhD)"
+  institution: "CSIRO, Nanocube Health, Deakin University, University of Melbourne"
+  period: "2024"
+  status: "Incomplete"
+  icon: "fas fa-microscope"
+  details:
+    - "Thesis topic: Biohybrid Nanorobotics for Cancer Theranostics"
+
+- degree: "Master of Biomedical Engineering"
+  institution: "University of Melbourne"
+  period: "2019 - 2021"
+  status: "Completed"
+  icon: "fas fa-university"
+  details:
+    - "Graduated with first class honours (WAM: 83)"
+    - "Recipient of discipline award for Capstone Thesis: Mathematical Modelling of Cellular Metabolism"
+
+- degree: "Bachelor of Science with Concurrent Diploma in Informatics"
+  institution: "University of Melbourne"
+  period: "2015 - 2018"
+  status: "Completed"
+  icon: "fas fa-book"
+  details:
+    - "Majored in Bioengineering Systems and Computer Science"
+    - "Recipient of Chancellor's Scholars Award (2015)"
+    - "Recipient of Westpac Asian Exchange Scholarship (2017)"
+
