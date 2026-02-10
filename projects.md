@@ -71,6 +71,7 @@ Here's a collection of projects I've worked on, ranging from web applications to
 <!-- Year Filter -->
 <div class="project-filter" style="margin-top: 3rem; margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center;">
     <button class="filter-btn active" data-year="all" style="padding: 0.5rem 1rem; background-color: rgba(97, 207, 90, 0.1); color: #61cf5a; border: 1px solid rgba(97, 207, 90, 0.3); border-radius: 0.25rem; cursor: pointer; font-size: 0.875rem; transition: all 0.3s ease;">All</button>
+    <button class="filter-btn" data-year="2026" style="padding: 0.5rem 1rem; background-color: rgba(97, 207, 90, 0.1); color: #61cf5a; border: 1px solid rgba(97, 207, 90, 0.3); border-radius: 0.25rem; cursor: pointer; font-size: 0.875rem; transition: all 0.3s ease;">2026</button>
     {% assign years = site.data.projects | map: 'year' | uniq | sort | reverse %}
     {% for year in years %}
     <button class="filter-btn" data-year="{{ year }}" style="padding: 0.5rem 1rem; background-color: rgba(97, 207, 90, 0.1); color: #61cf5a; border: 1px solid rgba(97, 207, 90, 0.3); border-radius: 0.25rem; cursor: pointer; font-size: 0.875rem; transition: all 0.3s ease;">{{ year }}</button>

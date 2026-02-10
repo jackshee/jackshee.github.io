@@ -99,9 +99,8 @@ layout: home
         </div>
         
         <div class="card-grid">
-            {% assign recent_year = site.data.projects | map: 'year' | uniq | sort | reverse | first %}
             {% for project in site.data.projects %}
-            {% if project.year == recent_year %}
+            {% if project.year == 2025 or project.year == 2026 %}
             {% if project.url %}
             <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="card project-card" data-year="{{ project.year }}">
             {% else %}
