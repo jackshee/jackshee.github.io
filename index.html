@@ -55,7 +55,7 @@ layout: home
                         <i class="fas fa-chart-bar"></i>
                     </div>
                     <h3 class="card-title">Data-Driven Insights</h3>
-                    <p class="card-description">My rigorous training in statistics and experience analysing large-scale datasets endows me with statistical intuition and the ability to quickly analyse and extract meaningful patterns from complex data, telling stories with clear visualisations without overwhelming users.</p>
+                    <p class="card-description">My rigorous training in statistics and experience analysing large-scale datasets of many modalities endows me with statistical intuition and the ability to quickly analyse and extract meaningful patterns from complex data, telling stories with clear visualisations without overwhelming users.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -89,6 +89,10 @@ layout: home
                 <span style="color: #61cf5a; font-size: 0.875rem;">Software Development</span>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-cogs" style="color: #61cf5a; font-size: 1.25rem;"></i>
+                <span style="color: #61cf5a; font-size: 0.875rem;">Engineering Design</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <i class="fas fa-pen" style="color: #61cf5a; font-size: 1.25rem;"></i>
                 <span style="color: #61cf5a; font-size: 0.875rem;">Writing</span>
             </div>
@@ -108,6 +112,8 @@ layout: home
                     <i class="fas fa-chart-line" style="color: #61cf5a; font-size: 2rem;"></i>
                     {% elsif project.type == "software-development" %}
                     <i class="fas fa-laptop-code" style="color: #61cf5a; font-size: 2rem;"></i>
+                    {% elsif project.type == "engineering-design" %}
+                    <i class="fas fa-cogs" style="color: #61cf5a; font-size: 2rem;"></i>
                     {% elsif project.type == "writing" %}
                     <i class="fas fa-pen" style="color: #61cf5a; font-size: 2rem;"></i>
                     {% endif %}

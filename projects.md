@@ -8,7 +8,7 @@ hero:
   alignment: center
 ---
 
-Here's a collection of projects I've worked on, ranging from web applications to open-source contributions.
+Here's a collection of projects I've worked on, ranging from web applications to data engineering and analysis pipelines.
 
 <!-- Project Type Legend -->
 <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem; padding: 1rem; background-color: rgba(97, 207, 90, 0.05); border-radius: 0.5rem;">
@@ -19,6 +19,10 @@ Here's a collection of projects I've worked on, ranging from web applications to
     <div style="display: flex; align-items: center; gap: 0.5rem;">
         <i class="fas fa-laptop-code" style="color: #61cf5a; font-size: 1.25rem;"></i>
         <span style="color: #61cf5a; font-size: 0.875rem;">Software Development</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <i class="fas fa-cogs" style="color: #61cf5a; font-size: 1.25rem;"></i>
+        <span style="color: #61cf5a; font-size: 0.875rem;">Engineering Design</span>
     </div>
     <div style="display: flex; align-items: center; gap: 0.5rem;">
         <i class="fas fa-pen" style="color: #61cf5a; font-size: 1.25rem;"></i>
@@ -34,6 +38,8 @@ Here's a collection of projects I've worked on, ranging from web applications to
         <i class="fas fa-chart-line" style="color: #61cf5a; font-size: 2rem;"></i>
         {% elsif project.type == "software-development" %}
         <i class="fas fa-laptop-code" style="color: #61cf5a; font-size: 2rem;"></i>
+        {% elsif project.type == "engineering-design" %}
+        <i class="fas fa-cogs" style="color: #61cf5a; font-size: 2rem;"></i>
         {% elsif project.type == "writing" %}
         <i class="fas fa-pen" style="color: #61cf5a; font-size: 2rem;"></i>
         {% endif %}
